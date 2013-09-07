@@ -6,12 +6,14 @@
 	margin-bottom: 12px;
 }
 
-.scroll-movie {
+#movies-background {
+	height: 1000px;
 	width: 110%;
 	opacity: 0.8;
 	background-color: black;
 	margin-left: -25px;
 }
+
 
 .movie-image {
 	margin: 0px -2px;
@@ -27,7 +29,27 @@
 }
 
 .maintext {
-	font-size: 1500%;
+	font-size: 700%;
+}
+
+
+.movie-form {
+	margin-top: 60px;
+}
+
+.movie-input {
+	text-align: center;
+	font-size: 40px;
+	color: white;
+	width: 70%;
+	height: 85px;
+
+	background-color: #1a1a1a;
+	border: 1px solid gray
+}
+
+#scroll-movies {
+	height: 1500px;
 }
 
 .slogan {
@@ -44,17 +66,8 @@
 	opacity: .75;
 }
 
-.movie-form {
-	margin-top: 60px;
-}
 
-.movie-input {
-	text-align: center;
-	font-size: 40px;
-	color: white;
-	width: 70%;
-	height: 85px;
-
-	background-color: #1a1a1a;
-	border: 1px solid gray
+body {
+	height: 200%;
+	width: 5000%;
 }
