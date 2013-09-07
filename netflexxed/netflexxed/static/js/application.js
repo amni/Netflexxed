@@ -1,13 +1,9 @@
 $(document).ready(function() {
 	var scrolledLeft = false;
-	var scrolledTop = true
+	var num_movies = 100;
+	// Alternate scrolling.
 
 	$(window).scroll(function(){
-		console.log(scrolledLeft);
-		
-
-		
-
 		if  ($(window).scrollTop() >= 900) {
 			if ($(window).scrollLeft() === 0) {
 				if (scrolledLeft) {
@@ -39,4 +35,19 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	// Lightboxes
+	
+	for (var i = 0; i < num_movies; i++) {
+		toggleLightbox(i);
+	}
+
+	function toggleLightbox(movie_id) {
+		$('#movie' + movie_id).hover(function() {
+			$('#lightbox' + movie_id).fadeIn(3000);
+		},
+		function() {
+			$('#lightbox' + movie_id).attr('hidden', '');
+		});
+	}
 });

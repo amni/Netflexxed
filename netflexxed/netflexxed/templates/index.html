@@ -80,6 +80,16 @@
 	</div>
 
 	<div id="scroll-movies">
+		<img id="movie0" src="{% static "images/movie.png" %}">
+		<div id="lightbox0" class="lightbox" >
+			Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+			<br>Lightbox0Lightbox0
+		</div>
 		{% for movie in movies %}
 		<a href={{movie.url}}><img src={{movie.pic_url}}></a>
 		{% endfor %}
