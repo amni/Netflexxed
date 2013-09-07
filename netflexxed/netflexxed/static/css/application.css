@@ -12,6 +12,7 @@
 	margin-right: 50px;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	padding-right: 100px;
 	top: 1106px;
 	position: absolute;
 	width: 100%;
@@ -22,8 +23,9 @@
 }
 
 .navbar-brand {
+	text-shadow: 1px 1px 3px rgb(200, 0, 0);
 	font-family: netflex, Helvetica, Arial, sans-serif;
-	color: white;
+	color: rgb(180, 10, 10) !important;
 	font-size: 30px;
 	padding-top: 25px;
 	margin-bottom: 12px;
@@ -79,11 +81,13 @@ div.lightbox h2 {
 .maintext {
 	font-family: netflex;
 	font-size: 700%;
+	text-shadow: 1px 1px 1px rgb(200, 200, 200);
 }
 
 
+
 .movie-form {
-	margin-top: 60px;
+	margin-top: 40px;
 }
 
 .movie-input {
@@ -111,9 +115,10 @@ div.lightbox h2 {
 	float: left;
 }
 
+
 .row {
 	overflow-x: hidden;
-	width: 90%;
+	width: 400%;
 }
 
 #scroll-movies {
@@ -143,21 +148,25 @@ div.lightbox h2 {
 }
 
 .slogan {
-	width: 60%;
+	width: 80%;
 	text-align: center;
 	margin: auto;
 	font-size: 40px;
 }
 
 .subbox {
-	background-color: rgba(10, 10, 10, .8);
+	background-color: rgba(10, 10, 10, .9);
 	border: 10px solid rgba(180, 10, 10, .8);
 	border-radius: 5px;
+	color: rgb(222, 222, 222) !important;
 	font-family: netflex;
 	padding: 30px;
 	margin: 0px 200px;
 
+
+
 }
+
 
 .x-button {
 	border: 3px solid rgba(33, 33, 33, .9);

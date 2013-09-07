@@ -1,4 +1,4 @@
-	var num_movies = 100;
+	var num_movies = 1000;
 	var cur_lightbox = -1;
 
 

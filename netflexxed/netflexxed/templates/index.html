@@ -63,26 +63,21 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
-		<a class="lead navbar-brand" href="#">Netflexxed</a>
+		<a class="lead navbar-brand" href="#">Netfixxed</a>
 	</div>
 </nav>
 
-<div class="backdrop">
-</div>
-
 <div class="mainbox" class="parallax-2">
 	<div class="subbox">
-		<h1 class="maintext">Netflexxed</h1>
+		<h1 class="maintext">Netfixxed</h1>
 		<p class="lead slogan">Unlock the true potential of Netflix.</p>
 
 		<div class="separation-line"></div>
 		<form class="movie-form">
-			<input class="movie-input" id="move-search" placeholder="Search Movies..">
+			<input class="movie-input" id="move-search" placeholder="Search Movies">
 		</form>
 	</div>
 </div>
-
-
 
 <div id="scroll-movies" class="parallax-1">
 	{% for movie in movies %}
@@ -94,7 +89,7 @@
 <div id="separator"></div>
 
 <div id="choose-movies">
-
+	<div id="redbar"></div>
 <!-- EACH ROW IS A DISTINCT SECTION.  SPLIT MOVIES AMONGST THE THREE ROWS -->
 
 	<div id="row1" class="row">
