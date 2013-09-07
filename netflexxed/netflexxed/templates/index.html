@@ -141,19 +141,13 @@
 	</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<div class="scroll-movie">
-		<img id="movie0" class="movie" src="images/movie.png" alt="movie-placeholder" title="placeholder">
-		<div id="Info-movie0" class="movie-info" hidden="">
+		{% for movie in movies %}
+
+		<a href={{movie.url}}><img id="movie0" class="movie" src={{movie.pic_url}} alt="movie-placeholder" title="placeholder">
+		<div id="Info-movie0" class="movie-info" hidden=""></a>
 			INFO 0
 		</div>
-		<img id="movie1" class="movie" src="images/movie.png" alt="movie-placeholder" title="placeholder">
-		<div id="Info-movie1" class="movie-info" hidden="">
-			INFO 1
-		</div>
-
-		<img id="movie2" class="movie" src="images/movie.png" alt="movie-placeholder" title="placeholder">
-		<div id="Info-movie2" class="movie-info" hidden="">
-			INFO 2
-		</div>
+		{%endfor%}
 	</div>
 
 

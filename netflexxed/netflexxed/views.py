@@ -32,7 +32,7 @@ def index(request):
 		movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i])
 		movie.save()
 	t = get_template('index.html')
-	html = t.render(Context({}))
+	html = t.render(Context({'movies':Movie.objects.all()}))
 	return HttpResponse(html)
 
 def test(request):
