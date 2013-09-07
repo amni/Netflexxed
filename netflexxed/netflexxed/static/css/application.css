@@ -6,6 +6,17 @@
 	margin-bottom: 12px;
 }
 
+.lightbox {
+	background: black;
+	left: 500px;
+	top: 500px;
+	position: fixed;
+	height: 50%;
+	width: 60%;
+	text-align: center;
+	z-index: 100;
+}
+
 #movies-background {
 	height: 1000px;
 	width: 110%;
@@ -20,7 +31,7 @@
 }
 
 .mainbox {
-	position: fixed;
+	position: absolute;
 	padding-top: 225px;
 	width: 100%;
 	text-align: center;
@@ -50,6 +61,13 @@
 
 #scroll-movies {
 	height: 1500px;
+}
+
+#shade {
+	background-color: rgba(100, 100, 100, .5);
+	height: 100%;
+	weight: 100%;
+	z-index: 1000;
 }
 
 .slogan {
