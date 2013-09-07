@@ -1,46 +1,45 @@
-$(document).ready(function() {
-	var scrolledLeft = false;
 	var num_movies = 100;
+	var cur_lightbox = -1;
 
-	$('#move-search').trigger('focus');
+
+	$(document).ready(function() {
+
+		$('#move-search').trigger('focus');
+
+		$(window).bind('scroll', function(e) {
+			parallaxScroll();
+		});
+
+		function parallaxScroll() {
+			var scrolled = $(window).scrollTop();
+    $('.parallax-1').css('top',(0-(scrolled*.4))+'px');
+    $('.parallax-2').css('top',(0-(scrolled*.7))+'px');
+
+		}
+/*
+	$(function(){
+      //Keep track of last scroll
+      var lastScroll = 0;
+      $(window).scroll(function(event){
+          //Sets the current scroll position
+          var st = $(this).scrollTop();
+          //Determines up-or-down scrolling
+          if (st > lastScroll){
+             //Replace this with your function call for downward-scrolling
+		$("#scroll-movies").animate({top: "-=9px"}, 0);
+          }
+          else {
+             //Replace this with your function call for upward-scrolling
+		$("#scroll-movies").animate({top: "+=9px"}, 0);
+          }
+          //Updates scroll position
+          lastScroll = st;
+      });
+    });
+	*/
+
 	// Alternate scrolling.
-	$(window).scroll(function(){
-		for (var i = 0; i < num_movies; i++) {
-			animateMargins(i);
-		}
-		if  ($(window).scrollTop() >= 700) {
-					
-					$('.mainbox').css({position: 'fixed', height: '0px', top: '-1000px', 'z-index': '0px'});
-			if ($(window).scrollLeft() === 0) {
-				if (scrolledLeft) {
-					scrolledLeft = false;
-					$(window).scrollTop(899);
-					$('body').mousewheel(function(event, delta) {
-						this.scrollTop -= (delta * .2);
-					});
-				}
-				else {
-					scrolledLeft = true;
-					$(window).scrollLeft(1);
-
-				}
-			}
-
-			else if ($(window).scrollLeft() > 0) {
-
-				$(function() {
-					$('#triangle').css({position: 'fixed', top: '0px', 'z-index': '60'});
-					$('#back').css({position: 'fixed', top: '-700px'});
-					$('#scroll-objects').css({position: 'static', 'margin-top': '700px'});
-					$('.mainbox').css({position: 'fixed', top: '-1000px'});
-					$('body').mousewheel(function(event, delta) {
-						this.scrollLeft -= (delta * .3);
-						event.preventDefault();
-					});
-				});
-			}
-		}
-	});
+	
 
 
 
@@ -49,20 +48,29 @@ $(document).ready(function() {
 		toggleLightbox(i);
 	}
 
-	
+	$('.x-button').click(function() {
+						$('#lightbox' + cur_lightbox).hide();	
+
+	})
 });
 
-function toggleLightbox(movie_id) {
-	$('#movie' + movie_id).hover(function() {
-		$('#lightbox' + movie_id).fadeIn(500);
-		$('#shade').fadeIn(500);
-	},
-	function() {
-		$('#lightbox' + movie_id).fadeOut(200);
+	function toggleLightbox(movie_id) {
+		$('#movie' + movie_id).click(function() {
+			
+			for (var i = 0; i < num_movies; i++) {
+				$('#lightbox' + i).hide();	
+			}
+			
+			$('#lightbox' + movie_id).fadeIn(500);
+			cur_lightbox = movie_id;
+		// $('#shade').fadeIn(500);
 	});
-}
+	}
 
-function animateMargins(movie_id) {
-	$('#movie' + movie_id).animate({marginLeft: '+=10px'}, 0);
+	function hideLightbox(movie_id) {
+		$('#lightbox' + movie_id).attr('hidden', '');
+	}
+	function animateMargins(movie_id) {
+		$('#movie' + movie_id).animate({marginLeft: '+=10px'}, 0);
 
-}
+	}
