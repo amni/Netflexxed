@@ -20,6 +20,8 @@
 
 <!-- jQuery mousewheel -->
 <script src="{% static "js/jquery-mousewheel/jquery.mousewheel.js" %}"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 
 	<!--
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -28,7 +30,26 @@
 
 <!-- Application JS -->
 <script src="{% static "js/application.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#move-search').keydown(function(e) {
 
+	    if (e.which === 13) {
+	    window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
+	    return false;
+	    }
+	   });
+	   });
+</script>
+<script>
+  $(function() {
+    var availableTags = {{movie_json|safe}}
+    console.log(availableTags)
+    $( "#move-search" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
 </head>
 
 <body>

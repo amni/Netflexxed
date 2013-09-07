@@ -12,16 +12,18 @@ from netflixhtml import html
 from movies.models import Movie
 from reviews.models import Review
 from rottentomatoes import RT
+from django.utils import simplejson 
 
 
 soup=BeautifulSoup(html)
+RT_KEY='utpyfbh943geqrnrcueqehga'
 
 country='canada'
 def index(request):
-
-
+	movies=Movie.objects.order_by('critics_score').reverse()
+	json_data= simplejson.dumps([movie.name for movie in movies], indent=4)
 	t = get_template('index.html')
-	html = t.render(Context({'movies':Movie.objects.order_by('critics_score').reverse()}))
+	html = t.render(Context({'movies':movies, 'movie_json':json_data}))
 	return HttpResponse(html)
 
 def test(request):
@@ -54,14 +56,15 @@ def test(request):
 		# print(movie_locations[i])
 		# print(img_locations[i])
 		if (len(Movie.objects.filter(name=titles[i]))==0 and titles[i]!='LOL'):
-			# if (len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))>0 and RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']!=-1):
-			# 		critics_score= RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']
-			# 		audience_score=RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['audience_score']
-			# 		movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False, audience_score=audience_score, critics_score=critics_score)
-			# 		movie.save()
-			# else:
-			movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False)
-			movie.save()
+			if (len(RT(RT_KEY).search(titles[i]))>0 and RT(RT_KEY).search(titles[i])[0]['ratings']['critics_score']!=-1):
+					critics_score= RT(RT_KEY).search(titles[i])[0]['ratings']['critics_score']
+					audience_score=RT(RT_KEY).search(titles[i])[0]['ratings']['audience_score']
+					movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False, audience_score=audience_score, critics_score=critics_score)
+					movie.save()
+					get_rotten_tomates()
+			else:
+				movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False)
+				movie.save()
 	t = get_template('index.html')
 	html = t.render(Context({}))
 	return HttpResponse(html)
@@ -77,11 +80,11 @@ def extract_movies(titles, img_locations, movie_locations):
 
 def get_rotten_tomates():
 	for movie in Movie.objects.all():
-		if len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))==0:
+		if len(RT(RT_KEY).search(movie.name))==0:
 			break
-		movie_id=RT('bt7f4pcbku6m9mqzuhhncc9e').search(movie.name)[0]['id']
-		for j in range(len(RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews'])):
-							reviewblob = RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews']
+		movie_id=RT(RT_KEY).search(movie.name)[0]['id']
+		for j in range(len(RT(RT_KEY).info(movie_id, 'reviews')['reviews'])):
+							reviewblob = RT(RT_KEY).info(movie_id, 'reviews')['reviews']
 							quote=reviewblob[j]['quote']
 							fresh_bool='fresh' in reviewblob[j]['freshness']
 							name= reviewblob[j]['critic']
