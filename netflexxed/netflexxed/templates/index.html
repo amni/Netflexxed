@@ -80,45 +80,9 @@
 	</div>
 
 	<div id="scroll-movies">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<br>
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<br>
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<img src="{% static "images/movie.png" %}">
-		<br>
+		{% for movie in movies %}
+		<a href={{movie.url}}><img src={{movie.pic_url}}></a>
+		{% endfor %}
 	</div>
 
 
