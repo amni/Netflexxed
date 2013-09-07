@@ -93,7 +93,7 @@
 <!-- EACH ROW IS A DISTINCT SECTION.  SPLIT MOVIES AMONGST THE THREE ROWS -->
 
 	<div id="row1" class="row">
-		{% for movie in movies %}
+		{% for movie in critically_acclaimed %}
 		<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
 		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
 			<div class="x-button">X</div>
@@ -120,9 +120,16 @@
 
 
 	<div id="row2">
+		{% for movie in fan_favorites %}
+			<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
+		{% endfor %}
 	</div>
 
 	<div id="row3">
+		{% for movie in not_american %}
+			<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
+		{% endfor %}
+
 	</div>
 
 

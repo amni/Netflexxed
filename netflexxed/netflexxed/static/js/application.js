@@ -14,6 +14,7 @@
 			var scrolled = $(window).scrollTop();
     $('.parallax-1').css('top',(0-(scrolled*.4))+'px');
     $('.parallax-2').css('top',(0-(scrolled*.7))+'px');
+    $('.parallax-3').css('top', (0-(scrolled*.7))+'px');
 
 		}
 /*
