@@ -21,7 +21,7 @@ def index(request):
 
 
 	t = get_template('index.html')
-	html = t.render(Context({'movies':Movie.objects.order_by('critics_score').reverse()}))
+	html = t.render(Context({'movies':Movie.objects.all()}))
 	return HttpResponse(html)
 
 def test(request):
