@@ -2,23 +2,24 @@
 <html>
 <head>
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	{% load staticfiles %}
+	<script src="{% static "js/jquery.js" %}"></script>
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
 
 	<!-- Optional theme 
 	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.css">
 -->
 
 <!-- Application CSS -->
-<link rel="stylesheet" href="css/application.css">
+<link rel="stylesheet" href="{% static "css/application.css" %}">
 
 <!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="bootstrap/dist/js/bootstrap.js"></script>
+<script src="{% static "bootstrap/dist/js/bootstrap.js" %}"></script>
 
 <!-- jQuery mousewheel -->
-<script src="js/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="{% static "js/jquery-mousewheel/jquery.mousewheel.js" %}"></script>
 
 	<!--
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -26,7 +27,7 @@
 -->
 
 <!-- Application JS -->
-<script src="js/application.js"></script>
+<script src="{% static "js/application.js" %}"></script>
 
 </head>
 
@@ -144,7 +145,6 @@
 		<div id="Info-movie0" class="movie-info" hidden="">
 			INFO 0
 		</div>
-
 		<img id="movie1" class="movie" src="images/movie.png" alt="movie-placeholder" title="placeholder">
 		<div id="Info-movie1" class="movie-info" hidden="">
 			INFO 1

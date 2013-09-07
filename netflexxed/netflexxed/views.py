@@ -36,12 +36,6 @@ def index(request):
 	return HttpResponse(html)
 
 def test(request):
-	payload = {'apikey':'bt7f4pcbku6m9mqzuhhncc9e',
-				'q': 'Toy+Story+3',
-				'page_limit': 1
-				}
-	req = requests.post('http://api.rottentomatoes.com/api/public/v1.0/movies.json', data=payload)
-	print(req.json())
 	# for movie in Movie.objects.all():
 	# 	print (movie.name)
 	# 	print (movie.url)
