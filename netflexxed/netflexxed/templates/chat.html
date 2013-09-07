@@ -7,7 +7,6 @@
 <!-- Application CSS -->
 <link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
 <link rel="stylesheet" href="{% static "css/chat.css" %}">
-<link rel="stylesheet" href="{% static "css/application.css" %}">
 
 <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
 
@@ -15,13 +14,6 @@
 </head>
 
 <body class="containter">
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<a class="lead navbar-brand" href="#">Netflexxed</a>
-		</div>
-	</nav>
-	<div class="filler"></div>
-
 	<div class="container">
 		<h1 class="chat-header">Chat & Discuss {{ movie_name }}</h1>
 		
@@ -42,8 +34,17 @@
 					Cras sed velit sed nibh ullamcorper gravida. Aliquam ac nulla condimentum urna facilisis porta non et ipsum. Praesent ornare massa elit, id porttitor tellus blandit vel. Nunc eget lobortis ipsum. Quisque aliquet mi ut lacus molestie gravida. Donec pharetra ultricies nisi pretium molestie. Cras blandit sem tellus, tempus fringilla orci consequat in. Maecenas id turpis ultrices, aliquam tellus ut, eleifend orci. Mauris sagittis velit ligula, viverra pulvinar diam aliquet id. Quisque et laoreet enim, eu luctus lectus. Phasellus in elit turpis. Donec nec tristique nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
 			</div>
 			<div class="span6">
-				<h1>Good Looking You:</h1>
+				<h1 class="chattext">Good Looking You:</h1>
 				<div id="myPublisherDiv"></div>
+				<h1 class="chattext">Ugly Everyone Else:</h1>
+				<span id="others">
+					<div id="myPublisherDiv"></div>
+					<div id="myPublisherDiv"></div>
+					<div id="myPublisherDiv"></div>
+					<div id="myPublisherDiv"></div>
+					<div id="myPublisherDiv"></div>
+
+				</span>
 		        <script type="text/javascript">
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
@@ -68,9 +69,9 @@
 		          			return;
 		          		}
 		          		// Create a div to put the suscriber element in
-		          		var div = document.createElement('div');
-		          		div.setAttribute('id', 'stream' + e.streams[i].streamId);
-		          		document.body.appendChild(div);
+		          		var span = document.createElement('create');
+		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
+		          		$("others").appendChild(span);
 
 		          		// Suscribe to that sucker
 		          		session.subscribe(e.streams[i]);
@@ -85,9 +86,10 @@
 		          			return;
 		          		}
 		          		// Create the div to put the suscriber element in to
-		          		var div = document.createElement('div');
-		          		div.setAttribute('id', 'stream' + e.streams[i].streamId);
-		          		document.body.appendChild(div);
+		          		var span = document.createElement('create');
+		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
+		          		$("others").appendChild(span);
+
 		          		session.subscribe(e.streams[i], div.id);
 		          	}
 		          });
