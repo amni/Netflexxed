@@ -23,7 +23,7 @@ def index(request):
 	movies=Movie.objects.order_by('critics_score').reverse()
 	json_data= simplejson.dumps([movie.name for movie in movies], indent=4)
 	t = get_template('index.html')
-	html = t.render(Context({'critically_acclaimed':movies,'fan_favorites':Movie.objects.order_by('audience_score'), 'not_in_america': [movie for movie in movies if not movie.is_american], 'movie_json':json_data}))
+	html = t.render(Context({'movies':movies, 'critically_acclaimed':movies,'fan_favorites':Movie.objects.order_by('audience_score'), 'not_in_america': [movie for movie in movies if not movie.is_american], 'movie_json':json_data}))
 	return HttpResponse(html)
 
 def test(request):
