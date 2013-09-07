@@ -1,5 +1,11 @@
+@font-face
+{
+	font-family: netflex;
+	src: url('planer.otf');
+}
+
 .navbar-brand {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: netflex, Helvetica, Arial, sans-serif;
 	color: white;
 	font-size: 30px;
 	padding-top: 25px;
@@ -7,21 +13,24 @@
 }
 
 .lightbox {
-	background: black;
-	left: 500px;
-	top: 500px;
+	background: rgba(11, 11, 11, .9);
+	border: 10px solid rgba(180, 10, 10, .8);
+	border-radius: 10px;
+	left: 20%;
+	top: 25%;
 	position: fixed;
 	height: 50%;
 	width: 60%;
 	text-align: center;
-	z-index: 100;
+	z-index: 2000;
 }
 
 #movies-background {
-	height: 1000px;
+	height: 100%;
 	width: 110%;
 	opacity: 0.8;
 	background-color: black;
+	margin-top: 70px;
 	margin-left: -25px;
 }
 
@@ -31,8 +40,9 @@
 }
 
 .mainbox {
+	height: 200%;
 	position: absolute;
-	padding-top: 225px;
+	padding-top: 100px;
 	width: 100%;
 	text-align: center;
 	z-index: 2;
@@ -40,6 +50,7 @@
 }
 
 .maintext {
+	font-family: netflex;
 	font-size: 700%;
 }
 
@@ -49,6 +60,7 @@
 }
 
 .movie-input {
+	font-family: netflex;
 	text-align: center;
 	font-size: 40px;
 	color: white;
@@ -61,12 +73,14 @@
 
 #scroll-movies {
 	height: 1500px;
+	position: fixed;
 }
 
 #shade {
 	background-color: rgba(100, 100, 100, .5);
 	height: 100%;
-	weight: 100%;
+	position: fixed;
+	width: 100%;
 	z-index: 1000;
 }
 
@@ -78,14 +92,17 @@
 }
 
 .subbox {
-	background-color: black;
+	background-color: rgba(10, 10, 10, .8);
+	border: 2px solid rgb(180, 10, 10);
+	border-radius: 5px;
+	font-family: netflex;
 	padding: 30px;
-	margin: 0px 300px;
-	opacity: .75;
+	margin: 0px 200px;
+
 }
 
 
 body {
-	height: 200%;
-	width: 5000%;
+	height: 300%;
+	width: 200%;
 }

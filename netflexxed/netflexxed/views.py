@@ -65,9 +65,27 @@ def test(request):
 			else:
 				movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False)
 				movie.save()
+			# if (len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))>0 and RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']!=-1):
+			# 		critics_score= RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']
+			# 		audience_score=RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['audience_score']
+			# 		movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False, audience_score=audience_score, critics_score=critics_score)
+			# 		movie.save()
+			# else:
 	t = get_template('index.html')
-	html = t.render(Context({}))
+	html = t.render(Context({'movies':movies, 'movie_json':json_data}))
 	return HttpResponse(html)
+	
+def chat(request, movie_id):
+	# Set the variables you want to pass in
+	movie = Movie.objects.get(id=movie_id)
+	movie_name = movie.name
+	movie_pic_url = movie.pic_url
+
+	t = get_template('chat.html')
+	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url}))
+	
+	return HttpResponse(html)
+
 
 
 def extract_movies(titles, img_locations, movie_locations):
@@ -79,14 +97,13 @@ def extract_movies(titles, img_locations, movie_locations):
 			img_locations.append(img['hsrc'])
 			movie_locations.append(link['href'])
 
-
 def get_rotten_tomates():
 	for movie in Movie.objects.all():
-		if len(RT(RT_KEY).search(movie.name))==0:
+		if len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))==0:
 			break
-		movie_id=RT(RT_KEY).search(movie.name)[0]['id']
-		for j in range(len(RT(RT_KEY).info(movie_id, 'reviews')['reviews'])):
-							reviewblob = RT(RT_KEY).info(movie_id, 'reviews')['reviews']
+		movie_id=RT('bt7f4pcbku6m9mqzuhhncc9e').search(movie.name)[0]['id']
+		for j in range(len(RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews'])):
+							reviewblob = RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews']
 							quote=reviewblob[j]['quote']
 							fresh_bool='fresh' in reviewblob[j]['freshness']
 							name= reviewblob[j]['critic']
@@ -94,3 +111,4 @@ def get_rotten_tomates():
 							print(name)
 							review= Review(name=name, body=quote, fresh=fresh_bool, movie=movie)
 							review.save()
+
