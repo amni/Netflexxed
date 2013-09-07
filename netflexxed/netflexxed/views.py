@@ -10,36 +10,90 @@ import json
 import requests
 from netflixhtml import html
 from movies.models import Movie
+from reviews.models import Review
+from rottentomatoes import RT
 
 
 soup=BeautifulSoup(html)
 
-
+country='Canada'
 def index(request):
 
+
+	t = get_template('index.html')
+	html = t.render(Context({'movies':Movie.objects.order_by('critics_score').reverse()}))
+	return HttpResponse(html)
+
+def test(request):
 	titles=[]
 	img_locations=[]
 	movie_locations=[]
 
-	for a in soup.find_all('img', alt=True, hsrc=True):
-	    titles.append(a['alt'])
-	    img_locations.append(a['hsrc'])
+	# for a in soup.find_all('img', alt=True, hsrc=True):
+	#     titles.append(a['alt'])
+	#     img_locations.append(a['hsrc'])
 
 
-	for b in soup.find_all('a', { "class" : "bobbable" }):
-		movie_locations.append(b['href'])
+	# for b in soup.find_all('a', { "class" : "bobbable" }):
+	# 	movie_locations.append(b['href'])
+	# for i in range(len((titles))):
+	# 		if (len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))>0 and RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']!=-1):
+	# 			critics_score= RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']
+	# 			audience_score=RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['audience_score']
+	# 			movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i], country=country, is_american=False, audience_score=audience_score, critics_score=critics_score)
+	# 		else:
+	# 			movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i], country=country, is_american=False)
+	# 		movie.save()
+	# titles=[]
+	# img_locations=[]
+	# movie_locations=[]
+	extract_movies(titles, img_locations, movie_locations)
+
 	for i in range(len((titles))):
-		movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i])
-		movie.save()
-	t = get_template('index.html')
-	html = t.render(Context({'movies':Movie.objects.all()}))
-	return HttpResponse(html)
-
-def test(request):
-	# for movie in Movie.objects.all():
-	# 	print (movie.name)
-	# 	print (movie.url)
-	# 	print(movie.pic_url)
+		# print(titles[i])
+		# print(movie_locations[i])
+		# print(img_locations[i])
+		if (len(Movie.objects.filter(name=titles[i]))==0 and titles[i]!='LOL'):
+			if (len(RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i]))>0 and RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']!=-1):
+					movie_id=RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['id']
+					critics_score= RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['critics_score']
+					audience_score=RT('bt7f4pcbku6m9mqzuhhncc9e').search(titles[i])[0]['ratings']['audience_score']
+					movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i], country=country, is_american=False, audience_score=audience_score, critics_score=critics_score)
+					movie.save()
+					for j in range(len(RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews'])):
+						reviewblob = RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews']
+						quote=reviewblob[j]['quote']
+						fresh_bool='fresh' in reviewblob[j]['freshness']
+						name= reviewblob[j]['critic']
+						print(quote)
+						print(name)
+						review= Review(name=name, body=quote, fresh=fresh_bool, movie=movie)
+						review.save()
+			else:
+					movie = Movie(name=titles[i], url=movie_locations[i], pic_url=img_locations[i], country=country, is_american=False)
+			movie.save()
 	t = get_template('index.html')
 	html = t.render(Context({}))
 	return HttpResponse(html)
+
+def extract_movies(titles, img_locations, movie_locations):
+	for a in soup.find_all('div', {"class": "agMovie"}):
+		img=(a.find('img', alt=True, hsrc=True))
+		link=(a.find('a'))
+		if img and img['alt'] and link:
+			titles.append(img['alt'])
+			img_locations.append(img['hsrc'])
+			movie_locations.append(link['href'])
+
+def get_rotten_tomates():
+	for movie in Movie.objects.all():
+		movie_id=RT('bt7f4pcbku6m9mqzuhhncc9e').search(movie.name)[0]['id']
+		for j in range(len(RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews'])):
+							reviewblob = RT('bt7f4pcbku6m9mqzuhhncc9e').info(movie_id, 'reviews')['reviews']
+							quote=reviewblob[j]['quote']
+							fresh_bool='fresh' in reviewblob[j]['freshness']
+							name= reviewblob[j]['critic']
+							print(quote)
+							print(name)
+							review= Review(name=name, body=quote, fresh=fresh_bool, movie=movie)
+							review.save()
