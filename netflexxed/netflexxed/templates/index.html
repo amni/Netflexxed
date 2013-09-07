@@ -20,54 +20,84 @@
 
 <!-- jQuery mousewheel -->
 <script src="{% static "js/jquery-mousewheel/jquery.mousewheel.js" %}"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-	<!--
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
--->
 
-<!-- Application JS -->
-<script src="{% static "js/application.js" %}"></script>
+		<!--
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	-->
 
+
+	<!-- Application JS -->
+	<script src="{% static "js/application.js" %}"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#move-search').keydown(function(e) {
+
+			if (e.which === 13) {
+				window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
+				return false;
+			}
+		});
+	});
+	</script>
+	<script>
+	$(function() {
+		var availableTags = {{movie_json|safe}}
+		console.log(availableTags)
+		$( "#move-search" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
 </head>
 
 <body>
-
-	<!-- Navigation Header -->
-	
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<a class="lead navbar-brand" href="#">Netflexxed</a>
-		</div>
-	</nav>
-
-	<div class="backdrop">
+	<!-- 
+	<div id="shade" hidden="">
 	</div>
-	<div class="mainbox">
-		<div class="subbox">
-			<h1 class="maintext">Netflexxed</h1>
-			<p class="lead slogan">Unlock the true potential of Netflix.</p>
+-->
 
-			<div class="separation-line"></div>
-			<form class="movie-form">
-				<input class="movie-input" id="move-search" placeholder="Search Movies..">
-			</form>
-		</div>
+<!-- Navigation Header -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<a class="lead navbar-brand" href="#">Netflexxed</a>
 	</div>
-	
+</nav>
+
+<div class="backdrop">
+</div>
+<div class="mainbox">
+	<div class="subbox">
+		<h1 class="maintext">Netflexxed</h1>
+		<p class="lead slogan">Unlock the true potential of Netflix.</p>
+
+		<div class="separation-line"></div>
+		<form class="movie-form">
+			<input class="movie-input" id="move-search" placeholder="Search Movies..">
+		</form>
+	</div>
+</div>
 
 
-	<div id="movies-background">
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
-		<p>Test text</p>
 
-		<!--
+<div id="movies-background">
+	<div id="scroll-movies">
+		{% for movie in movies %}
+		<a id="movie{{movie.id}}" href={{movie.url}}><img src={{movie.pic_url}}></a>
+		<div id="lightbox{{movie.id}}" class="lightbox" hidden="" >
+			<img src={{movie.pic_url}}>
+			<p>{{movie.name}}</p>
+			<p>{{movie.audience_score}}</p>
+
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<!--
 		{% for movie in movies %}
 
 		<a class="movie-image" href={{movie.url}}><img id="movie0" class="movie" src={{movie.pic_url}} alt="movie-placeholder" title="placeholder">
@@ -75,25 +105,7 @@
 			INFO 0
 		</div>
 		{%endfor%}
-		-->
-
-	</div>
-
-	<div id="scroll-movies">
-		<img id="movie0" src="{% static "images/movie.png" %}">
-		<div id="lightbox0" class="lightbox" >
-			Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-			<br>Lightbox0Lightbox0
-		</div>
-		{% for movie in movies %}
-		<a href={{movie.url}}><img src={{movie.pic_url}}></a>
-		{% endfor %}
-	</div>
+	-->
 
 
 </body>
