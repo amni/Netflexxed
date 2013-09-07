@@ -13,7 +13,7 @@ from movies.models import Movie
 from reviews.models import Review
 from rottentomatoes import RT
 
-
+import pdb
 soup=BeautifulSoup(html)
 
 country='canada'
@@ -62,6 +62,23 @@ def test(request):
 			# else:
 			movie = Movie(name=titles[i], url=movie_locations[i]+'?country='+country, pic_url=img_locations[i], country=country, is_american=False)
 			movie.save()
+
+def chat(request, movie_id):
+	# Set the variables you want to pass in
+	movie = Movie.objects.get(id=movie_id)
+	movie_name = movie.name
+	movie_pic_url = movie.pic_url
+
+	t = get_template('chat.html')
+	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url}))
+	
+	return HttpResponse(html)
+
+def test(request):
+	# for movie in Movie.objects.all():
+	# 	print (movie.name)
+	# 	print (movie.url)
+	# 	print(movie.pic_url)
 	t = get_template('index.html')
 	html = t.render(Context({}))
 	return HttpResponse(html)
@@ -88,4 +105,3 @@ def get_rotten_tomates():
 							print(quote)
 							print(name)
 							review= Review(name=name, body=quote, fresh=fresh_bool, movie=movie)
-							review.save()
