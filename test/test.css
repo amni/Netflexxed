@@ -1,0 +1,39 @@
+#back {
+	background: #ccc;
+	height: 700px;
+	overflow-y: scroll;
+	position: static;
+	width: 1500px;
+	z-index: 50;
+}
+
+#triangle {
+
+	width: 0; 
+	height: 0; 
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	
+	border-bottom: 100px solid white;
+
+	position: absolute;
+	top: 650px;
+	left: 45%;
+	z-index: 60 !important;
+
+}
+
+#scroll-objects {
+	margin-top: 0px;
+	z-index: 1000;
+}
+
+.movie {
+	z-index: 1000;
+}
+
+body {
+	height: 3000px;
+	padding: 0px;
+	width: 5000px;
+}
