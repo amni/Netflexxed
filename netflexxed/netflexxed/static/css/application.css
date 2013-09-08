@@ -102,6 +102,7 @@ div.lightbox h2 {
 	border: 1px solid gray
 }
 
+/*
 .parallax-1 {
 	position: absolute;
 }
@@ -114,7 +115,7 @@ div.lightbox h2 {
 .poster {
 	float: left;
 }
-
+*/
 
 .row {
 	overflow-x: hidden;
@@ -162,6 +163,8 @@ div.lightbox h2 {
 	font-family: netflex;
 	padding: 30px;
 	margin: 0px 200px;
+
+	z-index: 1000;
 
 
 

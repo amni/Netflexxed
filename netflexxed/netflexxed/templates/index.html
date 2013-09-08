@@ -54,10 +54,6 @@
 </head>
 
 <body>
-	<!-- 
-	<div id="shade" hidden="">
-	</div>
--->
 
 <!-- Navigation Header -->
 
@@ -67,8 +63,8 @@
 	</div>
 </nav>
 
-<div class="mainbox" class="parallax-2">
-	<div class="subbox">
+
+	<div class="subbox" class="parallax-2">
 		<h1 class="maintext">Netfixxed</h1>
 		<p class="lead slogan">Unlock the true potential of Netflix.</p>
 
@@ -77,7 +73,6 @@
 			<input class="movie-input" id="move-search" placeholder="Search Movies">
 		</form>
 	</div>
-</div>
 
 <div id="scroll-movies" class="parallax-1">
 	{% for movie in movies %}
@@ -86,7 +81,6 @@
 </div>
 <br>
 
-<div id="separator"></div>
 
 <div id="choose-movies">
 	<div id="redbar"></div>
@@ -94,7 +88,9 @@
 
 	<div id="row1" class="row">
 		{% for movie in critically_acclaimed %}
-		<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
+		<a id="movie{{movie.id}}"><img src={{movie.pic_url}}></a>
+
+
 		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
 			<div class="x-button">X</div>
 			<table>
@@ -140,16 +136,15 @@
 
 
 </div>
-<!--
-		{% for movie in movies %}
-
-		<a class="movie-image" href={{movie.url}}><img id="movie0" class="movie" src={{movie.pic_url}} alt="movie-placeholder" title="placeholder">
-		<div id="Info-movie0" class="movie-info" hidden=""></a>
-			INFO 0
-		</div>
-		{%endfor%}
-	-->
-
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#row1").smoothDivScroll({
+			mousewheelScrolling: "allDirections",
+			manualContinuousScrolling: true,
+			autoScrollingMode: "onStart"
+		});
+	});
+</script>
 
 </body>
 </html>
