@@ -15,7 +15,11 @@ ADMINS = (
 # https://devcenter.heroku.com/articles/getting-started-with-django#prerequisites
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'mebeweber'
+EMAIL_HOST_PASSWORD = 'pennapps'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
 MANAGERS = ADMINS
