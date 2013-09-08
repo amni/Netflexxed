@@ -32,7 +32,7 @@
 				<div class="aud score">Audience Score: {{aud_score}}</div>
 				<div class="crit score">Critics Score: {{crit_score}}</div>
 				<div class="line"></div>
-				
+
 				<h1 class="section-head">US?</h1>
 				{% if movie.is_american %}
 				<div class="aud score">Aww yeah!</div>
@@ -48,6 +48,7 @@
 				<div class="movie-critic">"{{ movie.quotes2 }}"</div>
 				<div class="movie-critic">{{ movie.critic3 }} says..</div>
 				<div class="movie-critic">"{{ movie.quotes3 }}"</div>
+
 			</div>
 			<div class="span6">
 				<h1 class="chattext">Good Looking You:</h1>
@@ -118,6 +119,11 @@
 		      </div>
 
 		  </div>
+
+		  <input class="email input">
+		  <button class="btn btn-large" onClick='{
+		  	window.location.pathname = (location.pathname + "/" + $(".email").val()).replace("//", "/");
+		}'>Send Email</button>
 		</div>
 	</body>
 	</html>
