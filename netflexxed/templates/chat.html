@@ -7,6 +7,7 @@
 <!-- Application CSS -->
 <link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
 <link rel="stylesheet" href="{% static "css/chat.css" %}">
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 
 <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
 
@@ -39,12 +40,6 @@
 				<div id="myPublisherDiv"></div>
 				<h1 class="chattext">Ugly Everyone Else:</h1>
 				<span id="others">
-					<div id="myPublisherDiv"></div>
-					<div id="myPublisherDiv"></div>
-					<div id="myPublisherDiv"></div>
-					<div id="myPublisherDiv"></div>
-					<div id="myPublisherDiv"></div>
-
 				</span>
 		        <script type="text/javascript">
 		          // Initialize API key, session, and token...
@@ -71,9 +66,8 @@
 		          		}
 		          		// Create a div to put the suscriber element in
 		          		var span = document.createElement('create');
-		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
-		          		$("others").appendChild(span);
-
+		          		$("others").append(span);
+		          		debugger;
 		          		// Suscribe to that sucker
 		          		session.subscribe(e.streams[i]);
 		          	}
@@ -89,9 +83,10 @@
 		          		// Create the div to put the suscriber element in to
 		          		var span = document.createElement('create');
 		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
-		          		$("others").appendChild(span);
+		          		$("others").append(span);
 
-		          		session.subscribe(e.streams[i], div.id);
+		          		debugger;
+		          		session.subscribe(e.streams[i], span.id);
 		          	}
 		          });
 		          session.connect(apiKey, token);
