@@ -7,56 +7,61 @@
 	<!-- Application CSS -->
 	<link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
 	<link rel="stylesheet" href="{% static "css/chat.css" %}">
+
 	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
-
+	
 	<script type="text/javascript" src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js"></script>
-
-
-
 
 </head>
 
 
 <body>
 	<div class="head">
-		<h1 class="chat-header">Chat & Discuss {{ movie_name }}</h1>
+		<h1 class="chat-header">Chat & Discuss <em>{{ movie_name }}</em></h1>
 	</div>
 
 	<div class="container">
 		<div class="row">
 			<div class="span6">
 				<a class="chat-movie-img" href={{ movie_pic_url }}>
-					<img id="movie0" class="movie" src={{ movie_pic_url }} alt="movie-placeholder" title="placeholder"/>
+					<img id="movie0" width="238px" class="movie" src={{ movie_pic_url }} alt="movie-placeholder" title="placeholder"/>
 				</a>
-				<h1 class="section-head snr">Scores / Ratings:</h1>
-				<div class="aud score">Audience Score: {{aud_score}}</div>
-				<div class="crit score">Critics Score: {{crit_score}}</div>
+				<h1 class="section-head"><strong>From:</strong></h1>
+				<p style="display: inline; font-size:25px; color: rgb(222, 222, 222);">{{movie.country}}</p>
+				<img src="../static/images/flags/png/{{movie.country}}-Flag-64.png">
+
+				<br>
+				<div class="line"></div>
+				<h1 class="section-head snr">Scores</h1>
+				<div class="aud score">Audience: {{aud_score}}</div>
+				<div class="crit score">Critic: {{critics_score}}</div>
+				<br>
 				<div class="line"></div>
 
-				<h1 class="section-head">US?</h1>
-				{% if movie.is_american %}
-				<div class="aud score">Aww yeah!</div>
-				{% else %}
-				<div class="aud score">Oh no!</div>
-				{% endif %}
-
-				<div class="line"></div>
-				<h1 class="section-head">What People Say:</h1>
-				<div class="movie-critic">{{ movie.critic1 }} says..</div>
-				<div class="movie-critic">"{{ movie.quotes1 }}"</div>
-				<div class="movie-critic">{{ movie.critic2 }} says..</div>
-				<div class="movie-critic">"{{ movie.quotes2 }}"</div>
-				<div class="movie-critic">{{ movie.critic3 }} says..</div>
-				<div class="movie-critic">"{{ movie.quotes3 }}"</div>
+				
+				<h1 class="section-head">What the Critics Say:</h1>
+				<div class="movie-critic"><b>{{ movie.critic1 }}</b> says:</div>
+				<div class="movie-critic"></i>"{{ movie.quotes1 }}"</i></div>
+				<br>
+				<div class="movie-critic"><b>{{ movie.critic2 }}</b> says:</div>
+				<div class="movie-critic"><i>"{{ movie.quotes2 }}"</i></div>
+				<br>
+				<div class="movie-critic"></b>{{ movie.critic3 }}</b> says:</div>
+				<div class="movie-critic"><i>"{{ movie.quotes3 }}"</i></div>
 
 			</div>
 			<div class="span6">
-				<h1 class="chattext">Good Looking You:</h1>
+				<h1 class="chattext">You:</h1>
 				<div id="myPublisherDiv"></div>
-				<h1 class="chattext">Ugly Everyone Else:</h1>
+				<h1 class="chattext">Start Chatting!</h1>
 				<span id="others">
 				</span>
-				<script type="text/javascript">
+				
+				<button class="btn" style="float: right; margin-left: 10px;" onClick='{
+				window.location.pathname = (location.pathname + "/" + $(".email").val()).replace("//", "/");
+			}'>Invite</button> 
+			<input style="float: right;" class="email input">
+			<script type="text/javascript">
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
 		          // Sessions and tokens are generated on your server and passed down to the client
@@ -113,17 +118,12 @@
 		          session.connect(apiKey, token);
 
 
-
-
 		          </script>				  
 		      </div>
 
 		  </div>
 
-		  <input class="email input">
-		  <button class="btn btn-large" onClick='{
-		  	window.location.pathname = (location.pathname + "/" + $(".email").val()).replace("//", "/");
-		}'>Send Email</button>
+		  
 		</div>
 	</body>
 	</html>

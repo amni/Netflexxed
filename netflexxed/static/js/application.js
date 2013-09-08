@@ -86,6 +86,12 @@
 		$('#lightbox' + cur_lightbox).hide();	
 
 	});
+
+	// Play icon.
+	$('.poster').hover(function() {
+		$('#play-icon').show();
+	});
+
 });
 	function scrollTriangle() {
 		$('#triangle').animate({bottom: '350px'}, 1000, function() {

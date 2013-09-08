@@ -27,7 +27,7 @@
 	font-family: netfix;
 	font-size: 45px;
 	font-weight: 900;
-	margin-bottom: 3%;
+	margin-bottom: 1%;
 	text-align: center;
 	text-shadow: 1px 1px 2px rgb(99, 0, 0);
 }
@@ -144,11 +144,31 @@ div.lightbox h2 {
 	border: 1px solid gray
 }
 
-#audience {
+#play-icon {
+	bottom: 48%;
+	left: 27.5%;
+	position: fixed;
+	opacity: .5;
+	z-index: 9000;
+}
+
+
+#acclaimed {
 	position: absolute;
-	bottom: 40%;
+	bottom: 86%;
 	left: 33%;
 	text-align: center;
+}
+
+#audience {
+	position: absolute;
+	bottom: 39%;
+	left: 33%;
+	text-align: center;
+}
+
+#row1 {
+	bottom: 54%;
 }
 
 #row2 {
@@ -158,7 +178,6 @@ div.lightbox h2 {
 .row {
 	width: 100%;
 	height: 30%;
-	margin-bottom: 30px;
 	position: absolute;
 }
 
@@ -274,10 +293,10 @@ div.lightbox h2 {
 }
 
 body {
-	background: rgb(180, 10, 10);
-
+	background: rgb(185, 10, 10);
 	height: 400%;
 	max-width: 100%;
+	overflow-x: hidden;
 }
 
 
