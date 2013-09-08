@@ -97,7 +97,6 @@ def chat(request, movie_id):
 	token = opentok_sdk.generate_token(SESSION_ID)
 	
 	tok_shit = simplejson.dumps([TOK_API_KEY, SESSION_ID, token], indent=4)
-	print(tok_shit)
 	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url,
 		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie,
 		'tok_shit': tok_shit}))
