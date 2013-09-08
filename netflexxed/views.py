@@ -12,6 +12,15 @@ from netflixhtml import html
 from movies.models import Movie
 from reviews.models import Review
 from rottentomatoes import RT
+
+
+import OpenTokSDK
+
+TOK_API_KEY = "40527392"
+TOK_API_SECRET = "c3fcbe854caad08b11e2629a9f5cfda472032fa0"
+SESSION_ID = "2_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U3VuIFNlcCAwOCAwMjo1ODoxNCBQRFQgMjAxM34wLjI5OTAzODA1fg"
+
+opentok_sdk = OpenTokSDK.OpenTokSDK(TOK_API_KEY, TOK_API_SECRET)
 from django.utils import simplejson 
 from django.core.mail import send_mail
 
@@ -83,8 +92,14 @@ def chat(request, movie_id):
 	movie_pic_url = movie.pic_url
 
 	t = get_template('chat.html')
+
+	token = opentok_sdk.generate_token(SESSION_ID)
+	
+	tok_shit = simplejson.dumps([TOK_API_KEY, SESSION_ID, token], indent=4)
+	print(tok_shit)
 	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url,
-		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie}))
+		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie,
+		'tok_shit': tok_shit}))
 	
 	return HttpResponse(html)
 
