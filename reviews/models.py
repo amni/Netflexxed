@@ -6,4 +6,4 @@ class Review (models.Model):
 	name=models.CharField(max_length=100)
 	body=models.CharField(max_length=1000)
 	fresh= models.BooleanField()
-	movie= models.ForeignKey(Movie, null=True)
+	movie= models.CharField(max_length=100, null=True)
