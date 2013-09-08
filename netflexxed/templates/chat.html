@@ -86,7 +86,6 @@
 		          		}
 
 		          		console.log("Connected to someone");
-		          		session.subscribe(e.streams[i]);
 
    						// Create the div to put the subscriber element in to
    						var div = document.createElement('div');
@@ -103,6 +102,7 @@
 
     					// Make sure we don't subscribe to ourself
     					if (e.streams[i].connection.connectionId == session.connection.connectionId) {
+    						debugger;
     						return;
     					}
     					console.log("Subsribed to someone");
