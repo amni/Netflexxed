@@ -33,10 +33,17 @@
 <script src="{% static "js/application.js" %}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	var map= {{name_to_id_map|safe}}
+	for (var i in map){
+		console.log(map[i])
+	}
 	$('#move-search').keydown(function(e) {
 
 		if (e.which === 13) {
-			window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
+			movie_id=map[map.indexOf($('#move-search').val())+1];
+			$('#lightbox' + movie_id).fadeIn(500);
+			cur_lightbox = movie_id;
+			// window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
 			return false;
 		}
 	});
