@@ -112,6 +112,12 @@
 					<td>
 						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ><a><br>
 						<p><em>Reviews</em></p>
+						{% for key, value in reviews.items %}
+							{% for review in reviews.key %} 
+								<p>test</p>
+						{% endfor %}	
+						{% endfor %}
+
 					</td>
 					<td><h2></h2></td>
 					<td></td>
