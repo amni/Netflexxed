@@ -4,13 +4,12 @@
 	<!-- jQuery -->
 	{% load staticfiles %}
 
-	<!-- Application CSS -->
-	<link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
-	<link rel="stylesheet" href="{% static "css/chat.css" %}">
-	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<!-- Application CSS -->
+<link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
+<link rel="stylesheet" href="{% static "css/chat.css" %}">
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 
-	<script type="text/javascript" src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js"></script>
-
+<script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
 
 
 
@@ -35,77 +34,68 @@
 					Fusce blandit felis suscipit augue interdum placerat. Fusce pretium egestas lectus, sed vulputate orci sodales at. Aliquam erat volutpat. Cras sed enim vel tortor varius pretium. Cras sed orci ultricies, feugiat metus sed, consequat libero. In nisl tortor, tincidunt ac nisi vitae, mollis tristique velit. Etiam aliquet, eros id dapibus fringilla, nisi leo mattis dolor, et congue sem lorem at quam. Quisque eget ultrices augue. Nunc viverra sed mi quis vestibulum. Sed sed leo eget lacus gravida ultricies quis et odio. Quisque tristique augue nisl, auctor dapibus neque interdum ac. Curabitur quam est, egestas sit amet massa nec, ultrices lacinia quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed tincidunt tincidunt quam, quis iaculis mi sodales eget. Duis congue, diam ac tempus rhoncus, nibh sem congue odio, id venenatis nisi quam vel eros. Nam lectus mauris, convallis et laoreet et, euismod interdum turpis.
 
 					Cras sed velit sed nibh ullamcorper gravida. Aliquam ac nulla condimentum urna facilisis porta non et ipsum. Praesent ornare massa elit, id porttitor tellus blandit vel. Nunc eget lobortis ipsum. Quisque aliquet mi ut lacus molestie gravida. Donec pharetra ultricies nisi pretium molestie. Cras blandit sem tellus, tempus fringilla orci consequat in. Maecenas id turpis ultrices, aliquam tellus ut, eleifend orci. Mauris sagittis velit ligula, viverra pulvinar diam aliquet id. Quisque et laoreet enim, eu luctus lectus. Phasellus in elit turpis. Donec nec tristique nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
-				</div>
-				<div class="span6">
-					<h1 class="chattext">Good Looking You:</h1>
-					<div id="myPublisherDiv"></div>
-					<h1 class="chattext">Ugly Everyone Else:</h1>
-					<span id="others">
-					</span>
-					<script type="text/javascript">
+			</div>
+			<div class="span6">
+				<h1 class="chattext">Good Looking You:</h1>
+				<div id="myPublisherDiv"></div>
+				<h1 class="chattext">Ugly Everyone Else:</h1>
+				<span id="others">
+				</span>
+		        <script type="text/javascript">
+		          debugger;
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
 		          // Sessions and tokens are generated on your server and passed down to the client
 		          var apiKey = "40527392";
-		          var sessionId = "1_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U2F0IFNlcCAwNyAyMTozMjoyMCBQRFQgMjAxM34wLjA5MjA1MTc0NH4";
-		          var token = "T1==cGFydG5lcl9pZD00MDUyNzM5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz0wMGM1YTgwNzYzZjE1OTY1NDQwNTI5ZmQwMmI1ZGMxNDhkMGM3NDQ3OnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9MV9NWDQwTURVeU56TTVNbjR4TWpjdU1DNHdMakYtVTJGMElGTmxjQ0F3TnlBeU1Ub3pNam95TUNCUVJGUWdNakF4TTM0d0xqQTVNakExTVRjME5INCZjcmVhdGVfdGltZT0xMzc4NjE0NzQ0Jm5vbmNlPTAuNTcyODk4MjMwOTgyMTIyMiZleHBpcmVfdGltZT0xMzc4NzAxMTQ0JmNvbm5lY3Rpb25fZGF0YT0=";
-
+		          var sessionId = "2_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U2F0IFNlcCAwNyAwOToyOTo0MCBQRFQgMjAxM34wLjIxNjcxMTk0fg";
+		          var token = "T1==cGFydG5lcl9pZD00MDUyNzM5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz05YzliYWVhZTM3NDFhOWQ4MjZiZTYyYzUwN2FiYjE4NDhkMDY1ZjhkOnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9Ml9NWDQwTURVeU56TTVNbjR4TWpjdU1DNHdMakYtVTJGMElGTmxjQ0F3TnlBd09Ub3lPVG8wTUNCUVJGUWdNakF4TTM0d0xqSXhOamN4TVRrMGZnJmNyZWF0ZV90aW1lPTEzNzg1NzEzODEmbm9uY2U9MC40NDM0MjY0ODYyNzY2MjAzJmV4cGlyZV90aW1lPTEzNzg2NTc3ODEmY29ubmVjdGlvbl9kYXRhPQ==";
 
 		          var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
-
-		          var session = TB.initSession(sessionId);
-		          session.connect(apiKey, token);
+		          // Create a session object with a OT session Id.
 		          var session = TB.initSession(sessionId);
 
-		        session.addEventListener('sessionConnected', function(e){
-		          	console.log("Connected to the session");
-		          	session.publish( publisher );
+		          // Add listener for when we have successfully connected to a session
+		          session.addEventListener('sessionConnected', function(e) {
+		          	// Once connected we want to publish
+		          	session.publish(publisher);
 
+		          	// What if people are already publishing to the session..
 		          	for (var i = 0; i < e.streams.length; i++) {
+		          		// Make sure we don't suscribe to our own
 		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
 		          			return;
 		          		}
-		          		
-		          		console.log("Connected to someone");
+		          		// Create a div to put the suscriber element in
+		          		var span = document.createElement('create');
+		          		$("others").append(span);
+		          		debugger;
+		          		// Suscribe to that sucker
 		          		session.subscribe(e.streams[i]);
+		          	}
+		          });
 
-   						// Create the div to put the subscriber element in to
-   						var div = document.createElement('div');
-   						div.setAttribute('id', 'stream' + e.streams[i].streamId);
-   						document.body.appendChild(div);
-   						session.subscribe(e.streams[i], div.id);
-   					}	
-
-   				});
-
-		        session.addEventListener('streamCreated', function(e){
-		        	console.log("Stream created");
+		          // What if a user joins after you have already connected to your session?
+		          session.addEventListener('streamCreated', function(e) {
 		          	for (var i = 0; i < e.streams.length; i++) {
+		          		// Make sure we don't suscribe to ourself
+		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
+		          			return;
+		          		}
+		          		// Create the div to put the suscriber element in to
+		          		var span = document.createElement('create');
+		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
+		          		$("others").append(span);
 
-    					// Make sure we don't subscribe to ourself
-					    if (e.streams[i].connection.connectionId == session.connection.connectionId) {
-					    	return;
-					    }
-					    console.log("Subsribed to someone");
-					    // Create the div to put the subscriber element in to
-					    var div = document.createElement('div');
-					    div.setAttribute('id', 'stream' + e.streams[i].streamId);
-					    document.body.appendChild(div);
-					    session.subscribe(e.streams[i], div.id);
-					}
-					});
-
-
+		          		debugger;
+		          		session.subscribe(e.streams[i], span.id);
+		          	}
+		          });
 		          session.connect(apiKey, token);
+		        </script>				  
+			</div>
 
-
-
-
-		          </script>				  
-		      </div>
-
-		  </div>
 		</div>
-
-	</body>
-	</html>
+	</div>
+ 
+</body>
+</html>
