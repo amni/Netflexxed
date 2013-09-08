@@ -1,8 +1,10 @@
 # Django settings for netflexxed project.
 import os
 import dj_database_url
+import OpenTokSDK
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

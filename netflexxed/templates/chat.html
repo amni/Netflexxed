@@ -57,12 +57,16 @@
 				<span id="others">
 				</span>
 				<script type="text/javascript">
+		          TB.setLogLevel(TB.DEBUG); 
+
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
 		          // Sessions and tokens are generated on your server and passed down to the client
-		          var apiKey = "40527392";
-		          var sessionId = "1_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U2F0IFNlcCAwNyAyMTozMjoyMCBQRFQgMjAxM34wLjA5MjA1MTc0NH4";
-		          var token = "T1==cGFydG5lcl9pZD00MDUyNzM5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz0wMGM1YTgwNzYzZjE1OTY1NDQwNTI5ZmQwMmI1ZGMxNDhkMGM3NDQ3OnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9MV9NWDQwTURVeU56TTVNbjR4TWpjdU1DNHdMakYtVTJGMElGTmxjQ0F3TnlBeU1Ub3pNam95TUNCUVJGUWdNakF4TTM0d0xqQTVNakExTVRjME5INCZjcmVhdGVfdGltZT0xMzc4NjE0NzQ0Jm5vbmNlPTAuNTcyODk4MjMwOTgyMTIyMiZleHBpcmVfdGltZT0xMzc4NzAxMTQ0JmNvbm5lY3Rpb25fZGF0YT0=";
+		          var tok_shit = {{ tok_shit | safe }}
+
+		          var apiKey = tok_shit[0];
+		          var sessionId = tok_shit[1];
+		          var token = tok_shit[2];
 
 
 		          var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');

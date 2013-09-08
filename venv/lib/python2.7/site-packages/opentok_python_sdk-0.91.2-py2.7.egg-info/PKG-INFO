@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: opentok-python-sdk
+Version: 0.91.2
+Summary: A python wrapper for the OpenTok video chat APIs.
+Home-page: https://github.com/opentok/Opentok-Python-SDK
+Author: TokBox, Inc.
+Author-email: support@tokbox.com
+License: UNKNOWN
+Description: see documentation on http://www.tokbox.com/opentok/api/tools/documentation/api/server_side_libraries.html?proglang=python
+        
+Keywords: video chat tokbox tok opentok python media
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Communications
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Communications :: Conferencing
+Classifier: Topic :: Multimedia :: Video :: Capture
+Classifier: Topic :: Multimedia :: Video :: Display
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
