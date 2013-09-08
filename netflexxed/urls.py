@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     url(r'^$', 'netflexxed.views.index', name='index'),
     url(r'^chat/(?P<movie_id>\d+)', 'netflexxed.views.chat', name='chat'),
     url(r'^test', 'netflexxed.views.test', name='test'),
-    url(r'^search/(?P<course>[a-zA-Z+0-9]+)', 'netflexxed.views.get_movie', name='get_movie')
+    url(r'^search/(?P<course>[a-zA-Z+0-9]+)', 'netflexxed.views.get_movie', name='get_movie'),
+    url(r'^reviews', 'netflexxed.views.get_rotten_tomates', name='get_rotten_tomates')
     # url(r'^netflexxed/', include('netflexxed.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

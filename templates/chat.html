@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- jQuery -->
+	{% load staticfiles %}
+
+<!-- Application CSS -->
+<link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
+<link rel="stylesheet" href="{% static "css/chat.css" %}">
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+
+<script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+
+
+
+</head>
+
+<body class="containter">
+	<div class="container">
+		<h1 class="chat-header">Chat & Discuss {{ movie_name }}</h1>
+		
+		<div class="row">
+			<div class="span6">
+				<a class="chat-movie-img" href={{ movie_pic_url }}>
+					<img id="movie0" class="movie" src={{ movie_pic_url }} alt="movie-placeholder" title="placeholder"/>
+				</a>
+
+
+				<div class="movie-info">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin eget quam nec vestibulum. Suspendisse posuere, ligula ac vulputate aliquam, mauris ipsum adipiscing neque, id fermentum justo dolor a ante. Quisque sodales auctor nisl nec euismod. Morbi a auctor mi. Curabitur volutpat egestas lorem, vitae gravida nulla convallis ut. Suspendisse potenti. Donec feugiat mauris libero, ut tincidunt leo bibendum vitae. Aliquam ut urna rhoncus mauris imperdiet tincidunt vel eu velit. Sed et nunc iaculis, porta diam nec, hendrerit ligula. Sed sollicitudin metus at vehicula gravida.
+
+					In sodales ac nibh non condimentum. Pellentesque ultrices auctor egestas. Aenean at faucibus ligula, in lobortis lacus. Vivamus tincidunt, risus vestibulum venenatis hendrerit, risus purus posuere nibh, ut eleifend erat felis eu mauris. Sed vulputate viverra risus vel euismod. Nam vel tristique tellus. Donec et odio ultrices, pharetra est ut, cursus nisl. Phasellus dictum felis sit amet malesuada commodo. Suspendisse eget auctor risus, vehicula tincidunt mauris.
+
+					Fusce blandit felis suscipit augue interdum placerat. Fusce pretium egestas lectus, sed vulputate orci sodales at. Aliquam erat volutpat. Cras sed enim vel tortor varius pretium. Cras sed orci ultricies, feugiat metus sed, consequat libero. In nisl tortor, tincidunt ac nisi vitae, mollis tristique velit. Etiam aliquet, eros id dapibus fringilla, nisi leo mattis dolor, et congue sem lorem at quam. Quisque eget ultrices augue. Nunc viverra sed mi quis vestibulum. Sed sed leo eget lacus gravida ultricies quis et odio. Quisque tristique augue nisl, auctor dapibus neque interdum ac. Curabitur quam est, egestas sit amet massa nec, ultrices lacinia quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed tincidunt tincidunt quam, quis iaculis mi sodales eget. Duis congue, diam ac tempus rhoncus, nibh sem congue odio, id venenatis nisi quam vel eros. Nam lectus mauris, convallis et laoreet et, euismod interdum turpis.
+
+					Cras sed velit sed nibh ullamcorper gravida. Aliquam ac nulla condimentum urna facilisis porta non et ipsum. Praesent ornare massa elit, id porttitor tellus blandit vel. Nunc eget lobortis ipsum. Quisque aliquet mi ut lacus molestie gravida. Donec pharetra ultricies nisi pretium molestie. Cras blandit sem tellus, tempus fringilla orci consequat in. Maecenas id turpis ultrices, aliquam tellus ut, eleifend orci. Mauris sagittis velit ligula, viverra pulvinar diam aliquet id. Quisque et laoreet enim, eu luctus lectus. Phasellus in elit turpis. Donec nec tristique nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
+			</div>
+			<div class="span6">
+				<h1 class="chattext">Good Looking You:</h1>
+				<div id="myPublisherDiv"></div>
+				<h1 class="chattext">Ugly Everyone Else:</h1>
+				<span id="others">
+				</span>
+		        <script type="text/javascript">
+		          debugger;
+		          // Initialize API key, session, and token...
+		          // Think of a session as a room, and a token as the key to get in to the room
+		          // Sessions and tokens are generated on your server and passed down to the client
+		          var apiKey = "40527392";
+		          var sessionId = "2_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U2F0IFNlcCAwNyAwOToyOTo0MCBQRFQgMjAxM34wLjIxNjcxMTk0fg";
+		          var token = "T1==cGFydG5lcl9pZD00MDUyNzM5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz05YzliYWVhZTM3NDFhOWQ4MjZiZTYyYzUwN2FiYjE4NDhkMDY1ZjhkOnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9Ml9NWDQwTURVeU56TTVNbjR4TWpjdU1DNHdMakYtVTJGMElGTmxjQ0F3TnlBd09Ub3lPVG8wTUNCUVJGUWdNakF4TTM0d0xqSXhOamN4TVRrMGZnJmNyZWF0ZV90aW1lPTEzNzg1NzEzODEmbm9uY2U9MC40NDM0MjY0ODYyNzY2MjAzJmV4cGlyZV90aW1lPTEzNzg2NTc3ODEmY29ubmVjdGlvbl9kYXRhPQ==";
+
+		          var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+		          // Create a session object with a OT session Id.
+		          var session = TB.initSession(sessionId);
+
+		          // Add listener for when we have successfully connected to a session
+		          session.addEventListener('sessionConnected', function(e) {
+		          	// Once connected we want to publish
+		          	session.publish(publisher);
+
+		          	// What if people are already publishing to the session..
+		          	for (var i = 0; i < e.streams.length; i++) {
+		          		// Make sure we don't suscribe to our own
+		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
+		          			return;
+		          		}
+		          		// Create a div to put the suscriber element in
+		          		var span = document.createElement('create');
+		          		$("others").append(span);
+		          		debugger;
+		          		// Suscribe to that sucker
+		          		session.subscribe(e.streams[i]);
+		          	}
+		          });
+
+		          // What if a user joins after you have already connected to your session?
+		          session.addEventListener('streamCreated', function(e) {
+		          	for (var i = 0; i < e.streams.length; i++) {
+		          		// Make sure we don't suscribe to ourself
+		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
+		          			return;
+		          		}
+		          		// Create the div to put the suscriber element in to
+		          		var span = document.createElement('create');
+		          		span.setAttribute('id', 'stream' + e.streams[i].streamId);
+		          		$("others").append(span);
+
+		          		debugger;
+		          		session.subscribe(e.streams[i], span.id);
+		          	}
+		          });
+		          session.connect(apiKey, token);
+		        </script>				  
+			</div>
+
+		</div>
+	</div>
+ 
+</body>
+</html>
