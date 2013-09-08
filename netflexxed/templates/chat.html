@@ -57,7 +57,7 @@
 		          session.connect(apiKey, token);
 		          var session = TB.initSession(sessionId);
 
-		          session.addEventListener('sessionConnected', function(e){
+		        session.addEventListener('sessionConnected', function(e){
 		          	console.log("Connected to the session");
 		          	session.publish( publisher );
 
@@ -65,6 +65,7 @@
 		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
 		          			return;
 		          		}
+		          		
 		          		console.log("Connected to someone");
 		          		session.subscribe(e.streams[i]);
 
@@ -77,12 +78,11 @@
 
    				});
 
-		          session.addEventListener('streamCreated', function(e){
-
+		        session.addEventListener('streamCreated', function(e){
+		        	console.log("Stream created");
 		          	for (var i = 0; i < e.streams.length; i++) {
 
     					// Make sure we don't subscribe to ourself
-
 					    if (e.streams[i].connection.connectionId == session.connection.connectionId) {
 					    	return;
 					    }
