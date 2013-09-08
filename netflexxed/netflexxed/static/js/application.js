@@ -3,6 +3,13 @@
 
 
 	$(document).ready(function() {
+		blink(1);
+		blink(2);
+		blink(3);
+		blink(4);
+		blink(5);
+
+		
 
 		$('#move-search').trigger('focus');
 
@@ -29,6 +36,19 @@
 
 	});
 });
+
+	function blink(movie_id) {
+		console.log(movie_id);
+		$('#blink' + movie_id).animate({opacity: '.2'}, 1000 * Math.random(), function() {
+			var rand  = movie_id + 5;
+			if (rand >= 30) {
+				rand -= 29;
+			}
+			$('#blink' + movie_id).animate({opacity: '1'}, 1000 * Math.random(), function() {
+				blink(rand)
+			});
+		});
+	}
 
 	function toggleLightbox(movie_id) {
 		$('#movie' + movie_id).click(function() {
