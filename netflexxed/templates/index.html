@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- jQuery -->
+	{% load staticfiles %}
+	<script src="{% static "js/jquery.js" %}"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
+
+	<!-- Optional theme 
+	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.css">
+-->
+
+<!-- Application CSS -->
+<link rel="stylesheet" href="{% static "css/application.css" %}">
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="{% static "bootstrap/dist/js/bootstrap.js" %}"></script>
+
+<!-- jQuery mousewheel -->
+<script src="{% static "js/jquery-mousewheel/jquery.mousewheel.js" %}"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+		<!--
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	-->
+
+
+	<!-- Application JS -->
+	<script src="{% static "js/application.js" %}"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#move-search').keydown(function(e) {
+
+			if (e.which === 13) {
+				window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
+				return false;
+			}
+		});
+	});
+	</script>
+	<script>
+	$(function() {
+		var availableTags = {{movie_json|safe}}
+		console.log(availableTags)
+		$( "#move-search" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
+</head>
+
+<body>
+	<!-- 
+	<div id="shade" hidden="">
+	</div>
+-->
+
+<!-- Navigation Header -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<a class="lead navbar-brand" href="#">Netflexxed</a>
+	</div>
+</nav>
+
+<div class="backdrop">
+</div>
+
+<div class="mainbox">
+	<div class="subbox">
+		<h1 class="maintext">Netflexxed</h1>
+		<p class="lead slogan">Unlock the true potential of Netflix.</p>
+
+		<div class="separation-line"></div>
+		<form class="movie-form">
+			<input class="movie-input" id="move-search" placeholder="Search Movies..">
+		</form>
+	</div>
+</div>
+
+
+
+<div id="movies-background">
+	<div id="scroll-movies">
+		{% for movie in movies %}
+		<a id="movie{{movie.id}}" href={{movie.url}}><img src={{movie.pic_url}}></a>
+		<div id="lightbox{{movie.id}}" class="lightbox" hidden="" >
+			<img src={{movie.pic_url}}>
+			<p></p>
+			<p>{{movie.audience_score}}</p>
+			
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<!--
+		{% for movie in movies %}
+
+		<a class="movie-image" href={{movie.url}}><img id="movie0" class="movie" src={{movie.pic_url}} alt="movie-placeholder" title="placeholder">
+		<div id="Info-movie0" class="movie-info" hidden=""></a>
+			INFO 0
+		</div>
+		{%endfor%}
+	-->
+
+
+</body>
+</html>
