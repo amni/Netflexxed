@@ -63,10 +63,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top p:hover {
 	font-family: netfix;
 	font-color: white;
 	left: 20%;
-	top: 25%;
+	top: 20%;
 	padding: 10px;
 	position: fixed;
-	height: 50%;
+	height: 60%;
 	width: 60%;
 	text-align: center;
 	z-index: 2000;
@@ -78,21 +78,41 @@ div.lightbox h2 {
 }
 
 .lightbox table {
+	color: white !important;
 	width: 100%;
 }
 
+.lightbox td .ratings {
+	border: 2px solid white;
+	border-radius: 10px !important;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+
+	width: 50%;
+}
+
 .lightbox th {
-	font-color: white !important;
 	font-family: netfix;
 	font-size: 20px;
+
 	text-align: center;
-	width: 30%;
+}
+
+.lightbox th.movie-name {
+
+	font-size: 25px;
+	text-shadow: 1px 1px 4px gray;
+}
+
+.lightbox th, .lightbox tr {
+		width: 30%;
+
 }
 
 .movie-image {
 	margin: 0px -2px;
 }
-
 
 
 .maintext {
