@@ -221,3 +221,7 @@ body {
 	-o-user-select: none;
 	user-select: none;
 }
+
+.scrollingHotSpotLeft, .scrollingHotSpotRight {
+	height: 256px !important;
+}
