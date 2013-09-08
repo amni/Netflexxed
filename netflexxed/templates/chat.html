@@ -16,33 +16,46 @@
 
 </head>
 
-<body class="containter">
-	<div class="container">
+
+<body>
+	<div class="head">
 		<h1 class="chat-header">Chat & Discuss {{ movie_name }}</h1>
-		
+	</div>
+
+	<div class="container">
 		<div class="row">
 			<div class="span6">
 				<a class="chat-movie-img" href={{ movie_pic_url }}>
 					<img id="movie0" class="movie" src={{ movie_pic_url }} alt="movie-placeholder" title="placeholder"/>
 				</a>
+				<h1 class="section-head snr">Scores / Ratings:</h1>
+				<div class="aud score">Audience Score: {{aud_score}}</div>
+				<div class="crit score">Critics Score: {{crit_score}}</div>
+				<div class="line"></div>
+				
+				<h1 class="section-head">US?</h1>
+				{% if movie.is_american %}
+				<div class="aud score">Aww yeah!</div>
+				{% else %}
+				<div class="aud score">Oh no!</div>
+				{% endif %}
 
-
-				<div class="movie-info">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin eget quam nec vestibulum. Suspendisse posuere, ligula ac vulputate aliquam, mauris ipsum adipiscing neque, id fermentum justo dolor a ante. Quisque sodales auctor nisl nec euismod. Morbi a auctor mi. Curabitur volutpat egestas lorem, vitae gravida nulla convallis ut. Suspendisse potenti. Donec feugiat mauris libero, ut tincidunt leo bibendum vitae. Aliquam ut urna rhoncus mauris imperdiet tincidunt vel eu velit. Sed et nunc iaculis, porta diam nec, hendrerit ligula. Sed sollicitudin metus at vehicula gravida.
-
-					In sodales ac nibh non condimentum. Pellentesque ultrices auctor egestas. Aenean at faucibus ligula, in lobortis lacus. Vivamus tincidunt, risus vestibulum venenatis hendrerit, risus purus posuere nibh, ut eleifend erat felis eu mauris. Sed vulputate viverra risus vel euismod. Nam vel tristique tellus. Donec et odio ultrices, pharetra est ut, cursus nisl. Phasellus dictum felis sit amet malesuada commodo. Suspendisse eget auctor risus, vehicula tincidunt mauris.
-
-					Fusce blandit felis suscipit augue interdum placerat. Fusce pretium egestas lectus, sed vulputate orci sodales at. Aliquam erat volutpat. Cras sed enim vel tortor varius pretium. Cras sed orci ultricies, feugiat metus sed, consequat libero. In nisl tortor, tincidunt ac nisi vitae, mollis tristique velit. Etiam aliquet, eros id dapibus fringilla, nisi leo mattis dolor, et congue sem lorem at quam. Quisque eget ultrices augue. Nunc viverra sed mi quis vestibulum. Sed sed leo eget lacus gravida ultricies quis et odio. Quisque tristique augue nisl, auctor dapibus neque interdum ac. Curabitur quam est, egestas sit amet massa nec, ultrices lacinia quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed tincidunt tincidunt quam, quis iaculis mi sodales eget. Duis congue, diam ac tempus rhoncus, nibh sem congue odio, id venenatis nisi quam vel eros. Nam lectus mauris, convallis et laoreet et, euismod interdum turpis.
-
-					Cras sed velit sed nibh ullamcorper gravida. Aliquam ac nulla condimentum urna facilisis porta non et ipsum. Praesent ornare massa elit, id porttitor tellus blandit vel. Nunc eget lobortis ipsum. Quisque aliquet mi ut lacus molestie gravida. Donec pharetra ultricies nisi pretium molestie. Cras blandit sem tellus, tempus fringilla orci consequat in. Maecenas id turpis ultrices, aliquam tellus ut, eleifend orci. Mauris sagittis velit ligula, viverra pulvinar diam aliquet id. Quisque et laoreet enim, eu luctus lectus. Phasellus in elit turpis. Donec nec tristique nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
-				</div>
-				<div class="span6">
-					<h1 class="chattext">Good Looking You:</h1>
-					<div id="myPublisherDiv"></div>
-					<h1 class="chattext">Ugly Everyone Else:</h1>
-					<span id="others">
-					</span>
-					<script type="text/javascript">
+				<div class="line"></div>
+				<h1 class="section-head">What People Say:</h1>
+				<div class="movie-critic">{{ movie.critic1 }} says..</div>
+				<div class="movie-critic">"{{ movie.quotes1 }}"</div>
+				<div class="movie-critic">{{ movie.critic2 }} says..</div>
+				<div class="movie-critic">"{{ movie.quotes2 }}"</div>
+				<div class="movie-critic">{{ movie.critic3 }} says..</div>
+				<div class="movie-critic">"{{ movie.quotes3 }}"</div>
+			</div>
+			<div class="span6">
+				<h1 class="chattext">Good Looking You:</h1>
+				<div id="myPublisherDiv"></div>
+				<h1 class="chattext">Ugly Everyone Else:</h1>
+				<span id="others">
+				</span>
+				<script type="text/javascript">
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
 		          // Sessions and tokens are generated on your server and passed down to the client
@@ -57,7 +70,7 @@
 		          session.connect(apiKey, token);
 		          var session = TB.initSession(sessionId);
 
-		        session.addEventListener('sessionConnected', function(e){
+		          session.addEventListener('sessionConnected', function(e){
 		          	console.log("Connected to the session");
 		          	session.publish( publisher );
 
@@ -65,7 +78,7 @@
 		          		if (e.streams[i].connection.connectionId == session.connection.connectionId) {
 		          			return;
 		          		}
-		          		
+
 		          		console.log("Connected to someone");
 		          		session.subscribe(e.streams[i]);
 
@@ -78,22 +91,22 @@
 
    				});
 
-		        session.addEventListener('streamCreated', function(e){
-		        	console.log("Stream created");
+		          session.addEventListener('streamCreated', function(e){
+		          	console.log("Stream created");
 		          	for (var i = 0; i < e.streams.length; i++) {
 
     					// Make sure we don't subscribe to ourself
-					    if (e.streams[i].connection.connectionId == session.connection.connectionId) {
-					    	return;
-					    }
-					    console.log("Subsribed to someone");
+    					if (e.streams[i].connection.connectionId == session.connection.connectionId) {
+    						return;
+    					}
+    					console.log("Subsribed to someone");
 					    // Create the div to put the subscriber element in to
 					    var div = document.createElement('div');
 					    div.setAttribute('id', 'stream' + e.streams[i].streamId);
 					    document.body.appendChild(div);
 					    session.subscribe(e.streams[i], div.id);
 					}
-					});
+				});
 
 
 		          session.connect(apiKey, token);
@@ -106,6 +119,5 @@
 
 		  </div>
 		</div>
-
 	</body>
 	</html>
