@@ -109,11 +109,9 @@ $(function() {
 					<td>
 						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
 						<p><em>Reviews</em></p>
-						{% for key, value in reviews.items %}
-						{% for review in reviews.key %} 
-						<p>test</p>
-						{% endfor %}	
-						{% endfor %}
+						{{movie.quotes1}}-{{movie.critic1}}
+
+
 
 					</td>
 					<td><h2></h2></td>
@@ -131,7 +129,6 @@ $(function() {
 			{% endfor %}
 		</div>
 		{% for movie in fan_favorites %}
-
 		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
 			<div class="x-button">X</div>
 			<table>
@@ -144,11 +141,7 @@ $(function() {
 					<td>
 						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
 						<p><em>Reviews</em></p>
-						{% for key, value in reviews.items %}
-						{% for review in reviews.key %} 
-						<p>test</p>
-						{% endfor %}	
-						{% endfor %}
+						{{movie.quotes1}}
 
 					</td>
 					<td><h2></h2></td>
@@ -179,11 +172,8 @@ $(function() {
 					<td>
 						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
 						<p><em>Reviews</em></p>
-						{% for key, value in reviews.items %}
-						{% for review in reviews.key %} 
-						<p>test</p>
-						{% endfor %}	
-						{% endfor %}
+						{{movie.quote1}}
+
 
 					</td>
 					<td><h2></h2></td>
