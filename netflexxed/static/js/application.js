@@ -38,7 +38,6 @@
 });
 
 	function blink(movie_id) {
-		console.log(movie_id);
 		$('#blink' + movie_id).animate({opacity: '.2'}, 1000 * Math.random(), function() {
 			var rand  = movie_id + 5;
 			if (rand >= 30) {
