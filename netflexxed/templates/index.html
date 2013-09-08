@@ -40,7 +40,6 @@ $(document).ready(function() {
 					$('#default').fadeIn(1000);
 				});
 			});
-
 			movie_id=map[map.indexOf($('#move-search').val())+1];
 			$('#lightbox' + movie_id).fadeIn(500);
 			cur_lightbox = movie_id;
@@ -70,7 +69,6 @@ $(function() {
 			<p id="to-top">Netfixxed</p>
 			<p id="to-use">How to Use</p>
 			<p id="the-team">The Team</p>
-			
 		</div>
 	</nav>
 
@@ -89,7 +87,7 @@ $(function() {
 			<h1>How to Use</h1>
 		</div>
 		<div id="team-info" hidden="">
-			<h1>Team</h1>
+			<h1>Team</h1><br><br><br>
 			<img class="teammate" src="{% static "images/alan.jpg" %}" width="166px">
 			<img class="teammate" src="{% static "images/matt.jpg" %}" width="166px">
 			<img class="teammate" src="{% static "images/mike.png" %}" width="166px">
@@ -113,7 +111,7 @@ $(function() {
 	<div id="choose-movies">
 
 		<!-- EACH ROW IS A DISTINCT SECTION.  SPLIT MOVIES AMONGST THE THREE ROWS -->
-		<h1>Critically Acclaimed</h1>
+		<h1 id="acclaimed">Critically Acclaimed</h1>
 		<div id="row1" class="row">
 			{% for movie in critically_acclaimed %}
 			<a id="movie{{movie.id}}"><img src={{movie.pic_url}}></a>
@@ -132,8 +130,9 @@ $(function() {
 				</tr>
 				<tr>
 					<td style="padding-left: 10px; padding-right: 10px;">
-						<a href="{{movie.url}}" style="top: 20px;"><img src={{movie.pic_url}} class="poster" ></a>
+						<a href="{{movie.url}}" style="top: 20px;"><img src={{movie.pic_url}} class="poster"></a>
 						<br><br>
+						<img id="play-icon" src="../static/images/play.png" width="96px" hidden="">
 						<img src="../static/images/flags/png/{{movie.country}}-Flag-48.png">
 						<div class="ratings">
 							<p><em>Ratings</em></p>
