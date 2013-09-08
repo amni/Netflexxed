@@ -29,28 +29,28 @@
 <script src="{% static "js/image-slider/js/jquery.smoothDivScroll-1.3.js" %}"></script>
 <link rel="stylesheet" href="{% static "js/image-slider/css/smoothDivScroll.css" %}"></script>
 
-	<!-- Application JS -->
-	<script src="{% static "js/application.js" %}"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#move-search').keydown(function(e) {
+<!-- Application JS -->
+<script src="{% static "js/application.js" %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#move-search').keydown(function(e) {
 
-			if (e.which === 13) {
-				window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
-				return false;
-			}
-		});
+		if (e.which === 13) {
+			window.location="./search/"+($('#move-search').val().replace(" ", "+")); 
+			return false;
+		}
 	});
-	</script>
-	<script>
-	$(function() {
-		var availableTags = {{movie_json|safe}}
-		console.log(availableTags)
-		$( "#move-search" ).autocomplete({
-			source: availableTags
-		});
+});
+</script>
+<script>
+$(function() {
+	var availableTags = {{movie_json|safe}}
+	console.log(availableTags)
+	$( "#move-search" ).autocomplete({
+		source: availableTags
 	});
-	</script>
+});
+</script>
 </head>
 
 <body>
@@ -86,99 +86,130 @@
 
 		<!-- EACH ROW IS A DISTINCT SECTION.  SPLIT MOVIES AMONGST THE THREE ROWS -->
 
-		<div id="row1" class="row gallery">
+		<div id="row1" class="row">
 			{% for movie in critically_acclaimed %}
 			<a id="movie{{movie.id}}"><img src={{movie.pic_url}}></a>
 
 
-			<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
-				<div class="x-button">X</div>
-				<table>
-					<tr>
-						<th>{{movie.name}}</th>
-						<th>Ratings</th>
-						<th>Discuss</th>
-					</tr>
-					<tr>
-						<td>
-							<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
-							<p><em>Reviews</em></p>
-							{% for key, value in reviews.items %}
-							{% for review in reviews.key %} 
-							<p>test</p>
-							{% endfor %}	
-							{% endfor %}
-
-						</td>
-						<td><h2></h2></td>
-						<td></td>
-					</tr>
-				</table>
-			</div>
+			
 			{% endfor %}
 		</div>
 
+		{% for movie in critically_acclaimed %}
 
-		<div id="row2">
+		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
+			<div class="x-button">X</div>
+			<table>
+				<tr>
+					<th>{{movie.name}}</th>
+					<th>Ratings</th>
+					<th>Discuss</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
+						<p><em>Reviews</em></p>
+						{% for key, value in reviews.items %}
+						{% for review in reviews.key %} 
+						<p>test</p>
+						{% endfor %}	
+						{% endfor %}
+
+					</td>
+					<td><h2></h2></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		{% endfor %}
+
+		<div id="row2" class="row">
 			{% for movie in fan_favorites %}
 			<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
-			<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
-				<div class="x-button">X</div>
-				<table>
-					<tr>
-						<th>{{movie.name}}</th>
-						<th>Ratings</th>
-						<th>Discuss</th>
-					</tr>
-					<tr>
-						<td>
-							<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
-							<p><em>Reviews</em></p>
-							{% for key, value in reviews.items %}
-							{% for review in reviews.key %} 
-							<p>test</p>
-							{% endfor %}	
-							{% endfor %}
-
-						</td>
-						<td><h2></h2></td>
-						<td></td>
-					</tr>
-				</table>
-			</div>
+			
 			{% endfor %}
 		</div>
+		{% for movie in fan_favorites %}
 
-		<div id="row3">
+		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
+			<div class="x-button">X</div>
+			<table>
+				<tr>
+					<th>{{movie.name}}</th>
+					<th>Ratings</th>
+					<th>Discuss</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
+						<p><em>Reviews</em></p>
+						{% for key, value in reviews.items %}
+						{% for review in reviews.key %} 
+						<p>test</p>
+						{% endfor %}	
+						{% endfor %}
+
+					</td>
+					<td><h2></h2></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		{% endfor %}
+
+		<div id="row3" class="row">
 			{% for movie in not_american %}
 			<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
-			<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
-				<div class="x-button">X</div>
-				<table>
-					<tr>
-						<th>{{movie.name}}</th>
-						<th>Ratings</th>
-						<th>Discuss</th>
-					</tr>
-					<tr>
-						<td>
-							<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
-							<p><em>Reviews</em></p>
-							{% for key, value in reviews.items %}
-							{% for review in reviews.key %} 
-							<p>test</p>
-							{% endfor %}	
-							{% endfor %}
-
-						</td>
-						<td><h2></h2></td>
-						<td></td>
-					</tr>
-				</table>
-			</div>
 			{% endfor %}
-
 		</div>
+		{% for movie in not_american %}
+
+		<div id="lightbox{{movie.id}}" class="lightbox" hidden="">
+			<div class="x-button">X</div>
+			<table>
+				<tr>
+					<th>{{movie.name}}</th>
+					<th>Ratings</th>
+					<th>Discuss</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="{{movie.url}}"><img src={{movie.pic_url}} class="poster" ></a><br>
+						<p><em>Reviews</em></p>
+						{% for key, value in reviews.items %}
+						{% for review in reviews.key %} 
+						<p>test</p>
+						{% endfor %}	
+						{% endfor %}
+
+					</td>
+					<td><h2></h2></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		{% endfor %}
+
 	</div>
+
+	<script type="text/javascript">
+	$(document).ready(function () {
+		$("#row1").smoothDivScroll({
+			mousewheelScrolling: "allDirections",
+			manualContinuousScrolling: true,
+			autoScrollingMode: "onStart"
+		});
+		$("#row2").smoothDivScroll({
+			mousewheelScrolling: "allDirections",
+			manualContinuousScrolling: true,
+			autoScrollingMode: "onStart"
+		});
+		$("#row3").smoothDivScroll({
+			mousewheelScrolling: "allDirections",
+			manualContinuousScrolling: true,
+			autoScrollingMode: "onStart"
+		});
+	});
+	</script>
 </body>
 </html>
