@@ -9,6 +9,7 @@ from netflexxed import views
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'netflexxed.views.index', name='index'),
+    url(r'^chat/(?P<movie_id>\d+)/(?P<email>[a-zA-Z@.]*)', 'netflexxed.views.email_invite', name='email_invite'),
     url(r'^chat/(?P<movie_id>\d+)', 'netflexxed.views.chat', name='chat'),
     url(r'^test', 'netflexxed.views.test', name='test'),
     url(r'^search/(?P<course>[a-zA-Z+0-9]+)', 'netflexxed.views.get_movie', name='get_movie'),

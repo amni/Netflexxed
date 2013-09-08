@@ -13,6 +13,7 @@ from movies.models import Movie
 from reviews.models import Review
 from rottentomatoes import RT
 from django.utils import simplejson 
+from django.core.mail import send_mail
 
 
 soup=BeautifulSoup(html)
@@ -61,6 +62,13 @@ def test(request):
 	t = get_template('index.html')
 	html = t.render(Context({}))
 	return HttpResponse(html)
+
+def email_invite(request, movie_id, email): 
+	send_mail('You have been invited to discuss a movie!',
+	 'netfixxed.herokuapp.com/chat/' + movie_id, 'sendgrid@netfixxed.com', 
+	 ['mebeweber@gmail.com'], fail_silently=False)
+	return chat(request, movie_id)
+
 
 def chat(request, movie_id):
 	# Set the variables you want to pass in
