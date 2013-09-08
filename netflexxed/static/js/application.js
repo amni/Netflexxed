@@ -3,13 +3,63 @@
 
 
 	$(document).ready(function() {
+		// Scroller arrow animation.
+		scrollTriangle();
+
+		$('#triangle').click(function() {
+			$('#triangle').hide();
+			$('html,body').animate({ scrollTop: 1000}, 3000);
+			return false; 
+		});
+
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > 400) {
+				$('#triangle').hide();
+
+			}
+			else {
+				$('#triangle').show();
+			}
+
+		});
+		
+		var fadeLength = 1000;
+		
+		$('#to-top').click(function() {
+			$('#team-info').fadeOut(fadeLength);
+			$('#use-info').fadeOut(fadeLength);
+			$('#default').fadeIn(fadeLength);
+			$('html,body').animate({ scrollTop: 0}, 3000);
+			return false; 
+		});
+
+		$('#to-use').click(function() {
+			$('#default').fadeOut(fadeLength, function() {
+				$('#use-info').fadeIn(fadeLength);
+			});
+			$('#team-info').fadeOut(fadeLength, function() {
+				$('#use-info').fadeIn(fadeLength);
+			});
+		});
+
+		$('#the-team').click(function() {
+
+			$('#default').fadeOut(fadeLength, function() {
+				$('#team-info').fadeIn(fadeLength);
+
+			});
+			$('#use-info').fadeOut(fadeLength, function() {
+				$('#team-info').fadeIn(fadeLength);
+
+			});
+		});
+
+		// Flashing posters.
 		blink(1);
 		blink(2);
 		blink(3);
 		blink(4);
 		blink(5);
-
-		
 
 		$('#move-search').trigger('focus');
 
@@ -22,7 +72,6 @@
 			$('.parallax-1').css('top',(0-(scrolled*.4))+'px');
 			$('.parallax-2').css('top',(0-(scrolled*.7))+'px');
 			$('.parallax-3').css('top', (0-(scrolled*.7))+'px');
-
 		}
 
 
@@ -36,9 +85,16 @@
 
 	});
 });
+	function scrollTriangle() {
+		$('#triangle').animate({bottom: '350px'}, 1000, function() {
+			$('#triangle').animate({bottom: '300px'}, 1000, function() {
+				scrollTriangle();
+			});
+		});
+	}
 
 	function blink(movie_id) {
-		$('#blink' + movie_id).animate({opacity: '.2'}, 1000 * Math.random(), function() {
+		$('#blink' + movie_id).animate({opacity: '.5'}, 1000 * Math.random(), function() {
 			var rand  = movie_id + 5;
 			if (rand >= 30) {
 				rand -= 29;
