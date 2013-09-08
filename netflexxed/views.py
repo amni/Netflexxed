@@ -18,7 +18,7 @@ import OpenTokSDK
 
 TOK_API_KEY = "40527392"
 TOK_API_SECRET = "c3fcbe854caad08b11e2629a9f5cfda472032fa0"
-SESSION_ID = "2_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U3VuIFNlcCAwOCAwMjo1ODoxNCBQRFQgMjAxM34wLjI5OTAzODA1fg"
+SESSION_ID = "1_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U3VuIFNlcCAwOCAwMzoxMjowMSBQRFQgMjAxM34wLjQwNjQyOX4"
 
 opentok_sdk = OpenTokSDK.OpenTokSDK(TOK_API_KEY, TOK_API_SECRET)
 from django.utils import simplejson 
@@ -89,6 +89,7 @@ def chat(request, movie_id):
 
 	t = get_template('chat.html')
 
+	
 	token = opentok_sdk.generate_token(SESSION_ID)
 	
 	tok_shit = simplejson.dumps([TOK_API_KEY, SESSION_ID, token], indent=4)

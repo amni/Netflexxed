@@ -21,6 +21,11 @@ body {
 	
 }
 
+.othervid0 {
+	top: 60%;
+	right: 15%;
+	position: absolute;
+}
 .movie-critic {
 	color: white;
 	font-size: 15px;

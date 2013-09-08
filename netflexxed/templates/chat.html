@@ -51,7 +51,7 @@
 				<div class="movie-critic">"{{ movie.quotes3 }}"</div>
 
 			</div>
-			<div class="span6">
+			<div class="span4 offset2">
 				<h1 class="chattext">Good Looking You:</h1>
 				<div id="myPublisherDiv"></div>
 				<h1 class="chattext">Ugly Everyone Else:</h1>
@@ -68,6 +68,7 @@
 		          var apiKey = tok_shit[0];
 		          var sessionId = tok_shit[1];
 		          var token = tok_shit[2];
+		          var count = 0;
 
 
 		          var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
@@ -86,11 +87,11 @@
 
 		          		console.log("Connected to someone");
 
-   						// Create the div to put the subscriber element in to
    						var div = document.createElement('div');
-   						div.setAttribute('id', 'stream' + e.streams[i].streamId);
-   						document.body.appendChild(div);
-   						session.subscribe(e.streams[i], div.id);
+					    div.setAttribute('id', 'stream' + e.streams[i].streamId + " othervid" + count);
+					    document.body.children[1].children[0].children[1].children[3].appendChild(div);
+					    session.subscribe(e.streams[i], div.id);
+					    count++;
    					}	
 
    				});
@@ -106,9 +107,10 @@
     					console.log("Subsribed to someone");
 					    // Create the div to put the subscriber element in to
 					    var div = document.createElement('div');
-					    div.setAttribute('id', 'stream' + e.streams[i].streamId);
-					    document.body.appendChild(div);
+					    div.setAttribute('id', 'stream' + e.streams[i].streamId + " othervid" + count);
+					    document.body.children[1].children[0].children[1].children[3].appendChild(div);
 					    session.subscribe(e.streams[i], div.id);
+					    count++;
 					}
 				});
 
