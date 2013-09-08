@@ -1,0 +1,28 @@
+.filler {
+	width: 100%;
+	height: 73px;
+}
+
+.chat-movie-img {
+	float: left;
+	padding: 10px;
+}
+
+.chat-header {
+	width: 100%;
+	text-align: center;
+	font-size: 63px;
+	padding: 20px;
+}
+
+.chattext {
+	text-align: center;
+}
+
+.myPublisherDiv {
+	margin: auto;
+}
+
+.others div {
+	margin-top: auto;
+}
