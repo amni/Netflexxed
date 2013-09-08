@@ -1,6 +1,6 @@
-	var num_movies = 1000;
+	var num_movies = 500;
 	var cur_lightbox = -1;
-
+	var top = true;
 
 	$(document).ready(function() {
 		// Scroller arrow animation.
@@ -15,7 +15,9 @@
 		$(window).scroll(function() {
 			if ($(window).scrollTop() > 400) {
 				$('#triangle').hide();
-
+				$('#team-info').fadeOut(fadeLength);
+				$('#use-info').fadeOut(fadeLength);
+				$('#default').fadeIn(fadeLength);					
 			}
 			else {
 				$('#triangle').show();
@@ -94,7 +96,7 @@
 	}
 
 	function blink(movie_id) {
-		$('#blink' + movie_id).animate({opacity: '.5'}, 1000 * Math.random(), function() {
+		$('#blink' + movie_id).animate({opacity: '.36'}, 1000 * Math.random(), function() {
 			var rand  = movie_id + 5;
 			if (rand >= 30) {
 				rand -= 29;
@@ -107,6 +109,7 @@
 
 	function toggleLightbox(movie_id) {
 		$('#movie' + movie_id).click(function() {
+			console.log(movie_id);
 			for (var i = 0; i < num_movies; i++) {
 				$('#lightbox' + i).hide();	
 			}
@@ -114,6 +117,16 @@
 			$('#lightbox' + movie_id).fadeIn(500);
 			cur_lightbox = movie_id;
 		});
+		$('#audience' + movie_id).click(function() {
+			console.log(movie_id);
+			for (var i = 0; i < num_movies; i++) {
+				$('#lightbox' + i).hide();	
+			}
+
+			$('#lightbox' + movie_id).fadeIn(500);
+			cur_lightbox = movie_id;
+		});
+
 	}
 
 	function hideLightbox(movie_id) {
