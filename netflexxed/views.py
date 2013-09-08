@@ -65,11 +65,14 @@ def test(request):
 def chat(request, movie_id):
 	# Set the variables you want to pass in
 	movie = Movie.objects.get(id=movie_id)
+	critc_score = movie.critics_score
+	aud_score = movie.audience_score
 	movie_name = movie.name
 	movie_pic_url = movie.pic_url
 
 	t = get_template('chat.html')
-	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url}))
+	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url,
+		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie}))
 	
 	return HttpResponse(html)
 

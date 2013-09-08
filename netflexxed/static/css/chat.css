@@ -1,6 +1,50 @@
-.filler {
+body {
+	background-color: rgba(10, 10, 10, .9);
+}
+
+.line {
+	width: 90%;
+	border-bottom: solid 1px white;
+	padding-top: 25px;
+	margin-bottom: 20px;
+	margin: auto auto 25px 20px;
+}
+
+.score {
+	color: white;
+	font-size: 25px;
+	padding-top: 25px;
+}
+
+.section-head {
+	color: white;
+	
+}
+
+.movie-critic {
+	color: white;
+	font-size: 15px;
+	padding-bottom: 5px; 
+}
+
+.snr {
+	margin-bottom: -5px;
+}
+
+.head {
 	width: 100%;
-	height: 73px;
+	background-color: #b9090b;
+	padding-top: 0px;
+	margin-top: -12px;
+	padding-bottom: 10px;
+}
+
+.chat-header {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	padding: 55px 0px;
 }
 
 .chat-movie-img {
