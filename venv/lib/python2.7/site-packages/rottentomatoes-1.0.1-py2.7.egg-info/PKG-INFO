@@ -1,0 +1,27 @@
+Metadata-Version: 1.0
+Name: rottentomatoes
+Version: 1.0.1
+Summary: Rotten Tomatoes Python API
+Home-page: https://github.com/zachwill/rottentomatoes
+Author: Zach Williams
+Author-email: hey@zachwill.com
+License: Unlicense (a.k.a. Public Domain)
+Description: 
+            An easy-to-use Python wrapper for the Rotten Tomatoes API.
+        
+            >>> RT('my-api-key').search('the lion king')
+        
+            Or, if your API key is stored in the `rottentomatoes_api_key.py` file,
+            the RT class can be initialized like so:
+        
+            >>> RT().search('the lion king')
+            
+Keywords: rottentomatoes movies rotten tomatoes
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP
