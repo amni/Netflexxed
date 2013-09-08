@@ -7,13 +7,13 @@
 #choose-movies {
 	bottom: 0px;
 	font-family: netflex;
-	height: 150%;
+	height: 90%;
 	margin-left: 50px;
 	margin-right: 50px;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	padding-right: 100px;
-	top: 1106px;
+	top: 750px;
 	position: absolute;
 	width: 100%;
 }
@@ -141,7 +141,8 @@ div.lightbox h2 {
 
 #scroll-movies {
 	background: white;
-	height: 1100px;
+	box-shadow: 0px 5px 10px black;
+	height: 943px;
 	margin-top: 72px;
 	overflow-y: hidden;
 	width: 120%;
@@ -176,6 +177,9 @@ div.lightbox h2 {
 
 }
 
+#triangle {
+
+}
 
 .x-button {
 	border: 3px solid rgba(33, 33, 33, .9);
@@ -220,4 +224,8 @@ body {
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+}
+
+.scrollingHotSpotLeft, .scrollingHotSpotRight {
+	height: 256px !important;
 }
