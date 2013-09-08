@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{% static "css/mattsboots.css" %}">
 	<link rel="stylesheet" href="{% static "css/chat.css" %}">
 
+
 	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 	
 	<script type="text/javascript" src="http://static.opentok.com/webrtc/v2.0/js/TB.min.js"></script>
@@ -56,25 +57,32 @@
 				<h1 class="chattext">Start Chatting!</h1>
 				<span id="others">
 				</span>
+<<<<<<< HEAD
 				
 				<button class="btn" style="float: right; margin-left: 10px;" onClick='{
 				window.location.pathname = (location.pathname + "/" + $(".email").val()).replace("//", "/");
 			}'>Invite</button> 
 			<input style="float: right;" class="email input">
 			<script type="text/javascript">
+=======
+				<script type="text/javascript">
+		          TB.setLogLevel(TB.DEBUG); 
+
+>>>>>>> 621cedb98818906eae93c0963da41c7f8563cce9
 		          // Initialize API key, session, and token...
 		          // Think of a session as a room, and a token as the key to get in to the room
 		          // Sessions and tokens are generated on your server and passed down to the client
-		          var apiKey = "40527392";
-		          var sessionId = "1_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U2F0IFNlcCAwNyAyMTozMjoyMCBQRFQgMjAxM34wLjA5MjA1MTc0NH4";
-		          var token = "T1==cGFydG5lcl9pZD00MDUyNzM5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz0wMGM1YTgwNzYzZjE1OTY1NDQwNTI5ZmQwMmI1ZGMxNDhkMGM3NDQ3OnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9MV9NWDQwTURVeU56TTVNbjR4TWpjdU1DNHdMakYtVTJGMElGTmxjQ0F3TnlBeU1Ub3pNam95TUNCUVJGUWdNakF4TTM0d0xqQTVNakExTVRjME5INCZjcmVhdGVfdGltZT0xMzc4NjE0NzQ0Jm5vbmNlPTAuNTcyODk4MjMwOTgyMTIyMiZleHBpcmVfdGltZT0xMzc4NzAxMTQ0JmNvbm5lY3Rpb25fZGF0YT0=";
+		          var tok_shit = {{ tok_shit | safe }}
+
+		          var apiKey = tok_shit[0];
+		          var sessionId = tok_shit[1];
+		          var token = tok_shit[2];
 
 
 		          var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
 
 		          var session = TB.initSession(sessionId);
 		          session.connect(apiKey, token);
-		          var session = TB.initSession(sessionId);
 
 		          session.addEventListener('sessionConnected', function(e){
 		          	console.log("Connected to the session");
@@ -86,7 +94,6 @@
 		          		}
 
 		          		console.log("Connected to someone");
-		          		session.subscribe(e.streams[i]);
 
    						// Create the div to put the subscriber element in to
    						var div = document.createElement('div');

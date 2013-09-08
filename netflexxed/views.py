@@ -8,10 +8,19 @@ import time
 import pdb
 import json
 import requests
-from netflixhtml import html, html2
+from netflixhtml import html
 from movies.models import Movie
 from reviews.models import Review
 from rottentomatoes import RT
+
+
+import OpenTokSDK
+
+TOK_API_KEY = "40527392"
+TOK_API_SECRET = "c3fcbe854caad08b11e2629a9f5cfda472032fa0"
+SESSION_ID = "2_MX40MDUyNzM5Mn4xMjcuMC4wLjF-U3VuIFNlcCAwOCAwMjo1ODoxNCBQRFQgMjAxM34wLjI5OTAzODA1fg"
+
+opentok_sdk = OpenTokSDK.OpenTokSDK(TOK_API_KEY, TOK_API_SECRET)
 from django.utils import simplejson 
 from django.core.mail import send_mail
 
@@ -19,17 +28,21 @@ from django.core.mail import send_mail
 soup=BeautifulSoup(html)
 RT_KEY='utpyfbh943geqrnrcueqehga'
 
-country='canada'
+country='Sweden'
 def index(request):
+	if (len(Movie.objects.filter(name="The Matrix"))==0):
+		movie= Movie(name="The Matrix", url="http://movies2.netflix.com/WiPlayer?movieid=20557937&amp;trkid=50000009&amp;t=The%2BMatrix&amp;tctx=-99%2C-99%2Ccbd7a870-c1dd-40cc-b08a-181cd7ed85c1-1509012", pic_url="http://cdn0.nflximg.net/images/1050/1691050.jpg", critics_score=87, audience_score=82)
+		movie.save()
 	movies=Movie.objects.order_by('critics_score').reverse()
 	review_map=[]
 	for movie in movies:
 		review_map.append(movie.name)
 		review_map.append(movie.id)
+
 	json_data= simplejson.dumps([movie.name for movie in movies], indent=4)
 	json_data2= simplejson.dumps(review_map, indent=4)
 	t = get_template('index.html')
-	html = t.render(Context({'movies':movies, 'critically_acclaimed':movies,'fan_favorites':Movie.objects.order_by('audience_score'), 'not_in_america': [movie for movie in movies if movie.is_american==False], 'movie_json':json_data, 'reviews':review_map, 'name_to_id_map':json_data2}))
+	html = t.render(Context({'movies':movies, 'critically_acclaimed':movies[:30],'fan_favorites':Movie.objects.order_by('audience_score')[:15], 'not_in_america': [movie for movie in movies if movie.is_american==False], 'movie_json':json_data, 'reviews':review_map, 'name_to_id_map':json_data2}))
 	return HttpResponse(html)
 
 def test(request):
@@ -79,8 +92,14 @@ def chat(request, movie_id):
 	movie_pic_url = movie.pic_url
 
 	t = get_template('chat.html')
+
+	token = opentok_sdk.generate_token(SESSION_ID)
+	
+	tok_shit = simplejson.dumps([TOK_API_KEY, SESSION_ID, token], indent=4)
+	print(tok_shit)
 	html = t.render(Context({'movie_name': movie_name, 'movie_pic_url': movie_pic_url,
-		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie}))
+		'critics_score': critc_score, 'aud_score': aud_score, 'movie': movie,
+		'tok_shit': tok_shit}))
 	
 	return HttpResponse(html)
 
