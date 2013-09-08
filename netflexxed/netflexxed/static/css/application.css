@@ -22,6 +22,11 @@
 	cursor: pointer;
 }
 
+h1 {
+	text-align: center;
+}
+
+
 nav.navbar.navbar-inverse.navbar-fixed-top {
 	height: 10%;
 	text-shadow: 1px 1px 3px rgb(200, 0, 0);
