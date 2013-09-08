@@ -21,12 +21,14 @@ RT_KEY='utpyfbh943geqrnrcueqehga'
 country='canada'
 def index(request):
 	movies=Movie.objects.order_by('critics_score').reverse()
-	review_map={}
+	review_map=[]
 	for movie in movies:
-		print (movie.quotes1)
+		review_map.append(movie.name)
+		review_map.append(movie.id)
 	json_data= simplejson.dumps([movie.name for movie in movies], indent=4)
+	json_data2= simplejson.dumps(review_map, indent=4)
 	t = get_template('index.html')
-	html = t.render(Context({'movies':movies, 'critically_acclaimed':movies,'fan_favorites':Movie.objects.order_by('audience_score'), 'not_in_america': [movie for movie in movies if movie.is_american==False], 'movie_json':json_data, 'reviews':review_map}))
+	html = t.render(Context({'movies':movies, 'critically_acclaimed':movies,'fan_favorites':Movie.objects.order_by('audience_score'), 'not_in_america': [movie for movie in movies if movie.is_american==False], 'movie_json':json_data, 'reviews':review_map, 'name_to_id_map':json_data2}))
 	return HttpResponse(html)
 
 def test(request):
