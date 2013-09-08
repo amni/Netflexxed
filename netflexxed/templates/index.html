@@ -81,7 +81,7 @@ $(function() {
 	</div>
 
 
-
+	<div id="triangle"></div>
 	<div id="choose-movies">
 
 		<!-- EACH ROW IS A DISTINCT SECTION.  SPLIT MOVIES AMONGST THE THREE ROWS -->
@@ -123,7 +123,7 @@ $(function() {
 		</div>
 		{% endfor %}
 
-<h1>Header 2</h1>
+		<h1>Header 2</h1>
 		<div id="row2" class="row">
 			{% for movie in fan_favorites %}
 			<a id="movie{{movie.id}}" style="display: inline;" ><img src={{movie.pic_url}}></a>
@@ -158,7 +158,7 @@ $(function() {
 		</div>
 		{% endfor %}
 
-<h1>Header 3</h1>
+		<h1>Header 3</h1>
 
 		<div id="row3" class="row">
 			{% for movie in not_american %}
