@@ -1,6 +1,6 @@
 Netflexxed
 ==========
-Authors: Alan Ni, Matt Eb, Michael Zh
+Authors: Alan Ni, Matt Ebeweber, Michael Zhao
 
 Finalist of PennApps and Winner of Best User of Mashery API.
 
