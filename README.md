@@ -1,4 +1,4 @@
-Netflexxed
+Netfixxed
 ==========
 Authors: Alan Ni, Matt Ebeweber, Michael Zhao
 
