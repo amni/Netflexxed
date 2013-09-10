@@ -2,20 +2,10 @@ Netflexxed
 ==========
 Authors: Alan Ni, Matt Eb, Michael Zh
 
-#Sort by Ratings!!
+Finalist of PennApps and Winner of Best User of Mashery API.
 
-What we need for landing page:
+Technologies Used:  Django, Python, CSS, Javascript, jQuery, Rotten Tomatoes API, OpenTok API, Sendgrid API
 
-##Name (Netflexxed?)
+Live Beta:  http://netfixxed.herokuapp.com/
 
-##Header pages (Team, About, ???)
-
-##What Filters?
-
-##Slogan/Catchphrase
-
-##Movie
-
-##Topics of movies
-
-##How to sort movies.
+Video Description: http://www.youtube.com/watch?v=dNIE7YicMMM
